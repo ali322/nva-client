@@ -1,0 +1,5 @@
+dist
+script
+build
+node_modules
+**/*.d.ts

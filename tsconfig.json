@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": ["dom", "esnext"],
+    "module": "es2015",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "sourceMap": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": true,
+    "jsx": "react",
+    "allowJs": true,
+    "baseUrl": "renderer",
+    "paths": {
+      "@/*": ["./*"],
+      "*": ["../typings/*"]
+    }
+  },
+  "include": [
+    "./**/*.tsx"
+  ],
+  "compileOnSave": false
+}

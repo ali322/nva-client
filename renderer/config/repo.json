@@ -1,0 +1,13 @@
+{
+  "单页应用(vue + vuex + vue-router)": "ali322/frontend-boilerplate#vue-spa",
+  "单页应用(react + redux + react-router)": "ali322/frontend-boilerplate#spa",
+  "单页应用(react + mobx + react-router)": "ali322/frontend-boilerplate#mobx-spa",
+  "多页应用(vue + vuex)": "ali322/frontend-boilerplate#vue",
+  "多页应用(react + redux)": "ali322/frontend-boilerplate#master",
+  "多页应用(react + mobx)": "ali322/frontend-boilerplate#mobx",
+
+  "SSR单页应用(koa + react + redux + react-router)":"ali322/ssr-boilerplate#spa",
+  "SSR单页应用(koa + vue + vuex + vue-router)":"ali322/ssr-boilerplate#vue-spa",
+  "SSR多页应用(react+redux)":"ali322/ssr-boilerplate#master",
+  "SSR多页应用(vue+vuex)":"ali322/ssr-boilerplate#vue"
+}
