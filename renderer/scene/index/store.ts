@@ -33,6 +33,8 @@ class ProjectStore {
 }
 
 class RootStore {
+  @observable locale: string = 'en'
+
   @observable histories: any[] = []
 
   @observable opened: any = null
@@ -49,6 +51,10 @@ class RootStore {
   project: ProjectStore
   constructor() {
     this.project = new ProjectStore()
+  }
+  @action.bound
+  changeLocale(payload: string): void {
+    this.locale = payload
   }
   @action.bound
   addHistory(payload: any): void {

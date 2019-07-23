@@ -122,7 +122,7 @@ export default class WorkBench extends React.Component<any, any>{
   }
   render() {
     return (
-      <div className="h-100">
+      <div className="h-100 border-box">
         {this.renderOperations()}
         {this.renderProject()}
         <Modal width={520} active={this.modalActived} onClose={() => this.modalActived = false}>

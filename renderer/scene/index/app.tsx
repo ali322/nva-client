@@ -2,7 +2,9 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { NavLink, Route, Switch } from 'react-router-dom'
 import { ipcRenderer } from 'electron'
+import { inject } from 'mobx-react'
 import { Icon, Toolbar } from '@/component'
+import t from '@/locale'
 import WorkBench from './workbench'
 import Setup from './setup'
 
@@ -32,25 +34,7 @@ export default class App extends React.Component<any, any>{
     return (
       <div className="h-100 position-relative d-flex">
         <Toolbar></Toolbar>
-        <StyledSidebar className="d-flex flex-column">
-          <div className="layout-logo d-flex justify-content-center align-items-center"></div>
-          <div className="layout-menu flex-1">
-            <NavLink to="/" activeClassName="active" exact>
-              <div className="d-flex full-width align-items-center justify-content-center">
-                <Icon type="cube" size={18}></Icon>
-                <span className="px-8 d-block text-base">项目</span>
-              </div>
-            </NavLink>
-            <NavLink to="/setup" activeClassName="active">
-              <div className="d-flex full-width align-items-center justify-content-center">
-                <Icon type="settings" size={18}></Icon>
-                <span className="px-8 d-block text-base">设置</span>
-              </div>
-            </NavLink>
-          </div>
-          <div className="layout-bottom d-flex justify-content-center align-items-center">
-          </div>
-        </StyledSidebar>
+        <LayoutSidebar></LayoutSidebar>
         <div className="flex-1 position-relative pt-24 bg-white">
           <Switch>
             <Route path="/" exact component={WorkBench} />
@@ -58,6 +42,36 @@ export default class App extends React.Component<any, any>{
           </Switch>
         </div>
       </div>
+    )
+  }
+}
+
+@inject((stores: any) => ({
+  locale: stores.root.locale
+}))
+class LayoutSidebar extends React.Component<any, any>{
+  render() {
+    const message = t(this.props.locale)
+    return (
+      <StyledSidebar className="d-flex flex-column">
+        <div className="layout-logo d-flex justify-content-center align-items-center"></div>
+        <div className="layout-menu flex-1">
+          <NavLink to="/" activeClassName="active" exact>
+            <div className="d-flex full-width align-items-center justify-content-center">
+              <Icon type="cube" size={18}></Icon>
+              <span className="pl-8 d-block text-base">{message.project}</span>
+            </div>
+          </NavLink>
+          <NavLink to="/setup" activeClassName="active">
+            <div className="d-flex full-width align-items-center justify-content-center">
+              <Icon type="settings" size={18}></Icon>
+              <span className="pl-8 d-block text-base">{message.settings}</span>
+            </div>
+          </NavLink>
+        </div>
+        <div className="layout-bottom d-flex justify-content-center align-items-center">
+        </div>
+      </StyledSidebar>
     )
   }
 }

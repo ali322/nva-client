@@ -1,9 +1,10 @@
 import * as React from 'react'
 import { ipcRenderer } from 'electron'
 import { observable } from 'mobx'
-import { observer } from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 import { Modal, Toast, Icon } from '@/component'
 import { isEmpty } from '@/lib'
+import t from '@/locale'
 
 enum ModalType {
   addDep,
@@ -12,6 +13,9 @@ enum ModalType {
   report
 }
 
+@inject((stores: any) => ({
+  locale: stores.root.locale
+}))
 @observer
 export default class ProjectExtra extends React.Component<any, any>{
   @observable modalVisible: boolean = false
@@ -115,6 +119,7 @@ export default class ProjectExtra extends React.Component<any, any>{
     return null
   }
   render() {
+    const message = t(this.props.locale)
     return (
       <div className="project-extra-container">
         <div className="project-extra h-100 d-flex align-items-center pr-12">
@@ -124,7 +129,7 @@ export default class ProjectExtra extends React.Component<any, any>{
               this.modalType = ModalType.upgradeDep
             }}>
               <Icon type="git-pull-request"></Icon>
-              <span className="pl-4 text-sm">更新依赖</span>
+              <span className="pl-4 text-sm">{message.updateDep}</span>
             </button>
           ) : null}
           <button className="text-muted d-flex align-items-center outline-0 border-0 bg-transparent line-height-25 cursor-pointer" onClick={() => {
@@ -132,14 +137,14 @@ export default class ProjectExtra extends React.Component<any, any>{
             this.modalType = ModalType.installDep
           }}>
             <Icon type="git-compare"></Icon>
-            <span className="pl-4 text-sm">重装依赖</span>
+            <span className="pl-4 text-sm">{message.reinstallDep}</span>
           </button>
           <button className="text-muted d-flex align-items-center outline-0 border-0 bg-transparent line-height-25 cursor-pointer" onClick={() => {
             this.modalVisible = true
             this.modalType = ModalType.addDep
           }}>
             <Icon type="git-branch"></Icon>
-            <span className="pl-4 text-sm">添加依赖</span>
+            <span className="pl-4 text-sm">{message.addDep}</span>
           </button>
         </div>
         <Modal active={this.modalVisible} width={300} onClose={() => this.modalVisible = false}>

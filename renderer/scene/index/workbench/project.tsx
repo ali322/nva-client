@@ -4,6 +4,7 @@ import { observer, inject } from 'mobx-react'
 import { autobind } from 'core-decorators'
 import ProjectExtra from './project-extra'
 import { Toast, Icon } from '@/component'
+import t from '@/locale'
 import Term from './term'
 
 interface TComponent {
@@ -11,6 +12,7 @@ interface TComponent {
 }
 
 @inject((stores: any) => ({
+  locale: stores.root.locale,
   auth: stores.root.auth,
   userSettings: stores.root.settings,
   running: stores.root.project.running,
@@ -129,7 +131,8 @@ export default class Project extends React.Component<any, any> {
     )
   }
   renderHeader() {
-    const { toggleDrawer, running, currentRunning, finished, path, name } = this.props
+    const { toggleDrawer, running, currentRunning, finished, path, name, locale } = this.props
+    const message = t(locale)
     return (
       <div className="header-border py-12 bg-white d-flex">
         <div className="d-flex justify-content-center align-items-center pl-32">
@@ -144,19 +147,19 @@ export default class Project extends React.Component<any, any> {
             onClick={() => this.run('dev')}
             disabled={currentRunning !== 'dev' && running}>
             <Icon type="build" size={14}></Icon>
-            <span className="pl-4">{currentRunning === 'dev' ? '停止开发' : '运行开发'}</span>
+            <span className="pl-4">{currentRunning === 'dev' ? '停止开发' : message.runDev}</span>
           </button>
           <button className={`btn mr-12 ${running && currentRunning === 'build' ? 'btn-outline-danger' : 'btn-outline-warning'}`}
             onClick={() => this.run('build')}
             disabled={currentRunning !== 'build' && running}>
             <Icon type="save"></Icon>
-            <span className="pl-4">{currentRunning === 'build' ? '停止打包' : '打包项目'}</span>
+            <span className="pl-4">{currentRunning === 'build' ? '停止打包' : message.releaseProject}</span>
           </button>
           <button className={`btn ${running && currentRunning === 'preview' ? 'btn-outline-danger' : 'btn-outline-success'}`}
             onClick={() => this.run('preview')}
             disabled={currentRunning !== 'preview' && running}>
             <Icon type="eye"></Icon>
-            <span className="pl-4">{currentRunning === 'preview' ? '停止预览' : '预览项目'}</span>
+            <span className="pl-4">{currentRunning === 'preview' ? '停止预览' : message.previewProject}</span>
           </button>
         </div>
         <ProjectExtra 
@@ -167,14 +170,15 @@ export default class Project extends React.Component<any, any> {
     )
   }
   renderProgress() {
-    const { percentage, path } = this.props
+    const { percentage, path, locale } = this.props
+    const message = t(locale)
     return (
       <div className="project-progress position-relative">
         <div style={{ width: `${percentage}%` }} className="process-percentage"></div>
         <div className="process-inner d-flex align-items-center">
           <div className="process-leading flex-1">
             <p className="m-0 line-height-25 pl-20">
-              <label className="m-0 pr-8 text-sm">项目路径:</label>
+              <label className="m-0 pr-8 text-sm">{message.projectPath}:</label>
               <a href="javascript:void(0)" className="text-muted text-sm">{path}</a>
             </p>
           </div>
