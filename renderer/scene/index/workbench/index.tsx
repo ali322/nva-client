@@ -5,6 +5,7 @@ import { remote, ipcRenderer } from 'electron'
 import { findIndex } from 'lodash'
 import { autobind } from 'core-decorators'
 import { Modal, Toast, Icon } from '@/component'
+import t from '@/locale'
 import Project from './project'
 import ProjectDrawer from './project-drawer'
 import ProjectForm from './project-form'
@@ -13,6 +14,7 @@ const win: Electron.BrowserWindow = remote.getCurrentWindow()
 
 @inject((stores: any): Record<string, any> => {
   return {
+    locale: stores.root.locale,
     histories: stores.root.histories,
     saveHistories: stores.root.saveHistories,
     addHistory: stores.root.addHistory,
@@ -47,10 +49,11 @@ export default class WorkBench extends React.Component<any, any>{
   }
   @autobind
   selectProject(path: string): any {
-    const { addHistory, histories, saveOpened } = this.props
+    const { addHistory, histories, saveOpened, locale } = this.props
+    const message = t(locale)
     const isValid: any = ipcRenderer.sendSync('check-valid', path)
     if (!isValid) {
-      this.toast.error('不支持的项目类型')
+      this.toast.error(message.unsupportedProject)
       return
     }
     let project: any = { path, name: isValid.name }
@@ -82,20 +85,21 @@ export default class WorkBench extends React.Component<any, any>{
     saveHistories(next)
   }
   renderOperations() {
-    const { histories, opened } = this.props
+    const { histories, opened, locale } = this.props
+    const message = t(locale)
     const buttons = (
       <div className={`flex-0 py-12 d-flex align-items-center justify-content-center ${opened ? '' : 'h-100'}`}>
         <button type="button" 
           className={`btn btn-success mr-8 btn-normal`} 
           onClick={() => this.modalActived = true}>
           <Icon type="add" size={16}></Icon>
-          <span className="pl-4">初始化项目</span>
+          <span className="pl-4">{message.initProject}</span>
         </button>
         <button type="button" 
           className={`btn btn-secondary btn-normal`}
           onClick={this.openProject}>
           <Icon type="folder-open" size={16}></Icon>
-          <span className="pl-4">打开项目</span>
+          <span className="pl-4">{message.openProject}</span>
         </button>
       </div>
     )

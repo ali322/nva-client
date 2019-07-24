@@ -4,6 +4,7 @@ const chalk = require('chalk')
 const context = require('./context')
 
 const argv = require('yargs').argv
+const locale = argv.locale || 'en'
 const path = argv.path
 const port = argv.port
 const protocol = argv.protocol || 'http'
@@ -15,10 +16,11 @@ const source = argv.source
 
 process.chdir(path)
 let tasks = require('nva-task')(context({
+  locale,
   proj: {
     distFolder: output,
     sourceFolder: source
   }
 }))
-console.log(chalk.yellow('开始启动开发服务...'))
+console.log(chalk.yellow(locale === 'cn' ? '开始启动开发服务...' : 'start launch development service'))
 tasks.dev({ protocol, hostname, port, browser, profile })

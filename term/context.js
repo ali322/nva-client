@@ -14,12 +14,12 @@ module.exports = function (options = {}) {
         : fs.existsSync(path.resolve(`.${namespace}`, 'vendor.dev.json'))
           ? path.resolve(`.${namespace}`, 'vendor.dev.json')
           : path.resolve(`.${namespace}`, 'vendor.json'),
-    hooks,
+    hooks: hooks(options.locale),
     watch() {
-      console.log(chalk.yellow('请重启开发服务'))
+      console.log(chalk.yellow(options.locale === 'cn' ? '请重启开发服务' : 'please restart development service'))
     },
     proj: options.proj || {},
-    logText: {
+    logText: options.locale === 'cn' ? {
       buildSuccess: '编译 %s 成功于 %s 耗时 %dms',
       serverRunning: '开发服务运行在',
       projectInvalid: '项目配置错误',
@@ -42,6 +42,6 @@ module.exports = function (options = {}) {
       mockChange: '模拟接口配置 %s 已改变',
       mockAdd: '模拟接口配置 %s 已添加',
       mockDelete: '模拟接口配置 %s 已删除'
-    }
+    } : null
   }
 }

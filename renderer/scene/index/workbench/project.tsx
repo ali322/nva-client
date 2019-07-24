@@ -47,17 +47,14 @@ export default class Project extends React.Component<any, any> {
   }
   @autobind
   dev() {
-    const { path, userSettings, saveState } = this.props
+    const { path, userSettings, saveState, locale } = this.props
     saveState('percentage', 0)
     let args = [
-      '--path',
-      path,
-      '--port',
-      userSettings.devPort,
-      '--output',
-      userSettings.output,
-      '--source',
-      userSettings.source
+      '--locale', locale,
+      '--path', path,
+      '--port', userSettings.devPort,
+      '--output', userSettings.output,
+      '--source', userSettings.source
     ]
     if (userSettings.profile) {
       args.push('--profile')
@@ -67,7 +64,7 @@ export default class Project extends React.Component<any, any> {
       if (matches) {
         saveState('percentage', parseInt(matches[1]))
       }
-      if (data.toString().includes('开发服务运行在')) {
+      if (data.toString().includes(locale === 'cn' ? '开发服务运行在' : 'server running at')) {
         saveState('percentage', 100)
         saveState('finished', true)
       }
@@ -75,14 +72,12 @@ export default class Project extends React.Component<any, any> {
   }
   @autobind
   build() {
-    const { path, userSettings, saveState} = this.props
+    const { path, userSettings, saveState, locale} = this.props
     let args = [
-      '--path',
-      path,
-      '--output',
-      userSettings.output,
-      '--source',
-      userSettings.source
+      '--locale', locale,
+      '--path', path,
+      '--output', userSettings.output,
+      '--source', userSettings.source
     ]
     if (userSettings.profile) {
       args.push('--profile')
@@ -92,7 +87,7 @@ export default class Project extends React.Component<any, any> {
       if (matches) {
         saveState('percentage', parseInt(matches[1]))
       }
-      if (data.toString().includes('项目打包完成')) {
+      if (data.toString().includes(locale ==='cn' ? '项目打包完成' : 'release project finished')) {
         saveState('percentage', 100)
         saveState('finished', true)
       }
@@ -100,31 +95,32 @@ export default class Project extends React.Component<any, any> {
   }
   @autobind
   preview() {
-    const { path, userSettings, saveState } = this.props
+    const { path, userSettings, saveState, locale } = this.props
     saveState('percentage', 0)
     this.term.run('task.js', [
-      '--path',
-      path,
-      '--name',
-      'preview',
-      '--port',
-      userSettings.previewPort,
-      '--output',
-      userSettings.output
+      '--locale', locale,
+      '--path', path,
+      '--name', 'preview',
+      '--port', userSettings.previewPort,
+      '--output', userSettings.output
     ])
   }
   @autobind
   installPKG(pkgs: any[] = []) {
-    const { saveState } = this.props
+    const { saveState, locale } = this.props
     saveState('ready', false)
     this.term.stop()
     const { path, userSettings } = this.props
-    const args = ['--path', path, '--registry', userSettings.npmRegistry]
+    const args = [
+      '--locale', locale,
+      '--path', path, 
+      '--registry', userSettings.npmRegistry
+    ]
     this.term.run(
       'install.js', 
       pkgs.length > 0 ? args.concat(['--pkg', pkgs.join(',')]) : args,
       (data: any) => {
-        if (data.toString().includes('依赖包安装完成')) {
+        if (data.toString().includes(locale ==='cn' ? '依赖包安装完成' : 'all dependencies installed')) {
           saveState('ready', true)
         }
       }
@@ -147,19 +143,19 @@ export default class Project extends React.Component<any, any> {
             onClick={() => this.run('dev')}
             disabled={currentRunning !== 'dev' && running}>
             <Icon type="build" size={14}></Icon>
-            <span className="pl-4">{currentRunning === 'dev' ? '停止开发' : message.runDev}</span>
+            <span className="pl-4">{currentRunning === 'dev' ? message.stopDev : message.runDev}</span>
           </button>
           <button className={`btn mr-12 ${running && currentRunning === 'build' ? 'btn-outline-danger' : 'btn-outline-warning'}`}
             onClick={() => this.run('build')}
             disabled={currentRunning !== 'build' && running}>
             <Icon type="save"></Icon>
-            <span className="pl-4">{currentRunning === 'build' ? '停止打包' : message.releaseProject}</span>
+            <span className="pl-4">{currentRunning === 'build' ? message.stopRelease : message.releaseProject}</span>
           </button>
           <button className={`btn ${running && currentRunning === 'preview' ? 'btn-outline-danger' : 'btn-outline-success'}`}
             onClick={() => this.run('preview')}
             disabled={currentRunning !== 'preview' && running}>
             <Icon type="eye"></Icon>
-            <span className="pl-4">{currentRunning === 'preview' ? '停止预览' : message.previewProject}</span>
+            <span className="pl-4">{currentRunning === 'preview' ? message.stopPreview : message.previewProject}</span>
           </button>
         </div>
         <ProjectExtra 

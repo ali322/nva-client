@@ -1,10 +1,13 @@
 nva-client
 ===
+[![GitHub release](https://img.shields.io/github/release/ali322/nva-client.svg)](https://github.com/ali322/nva-client/releases) [![Total Downloads](https://img.shields.io/github/downloads/ali322/nva-client/total.svg)](https://github.com/ali322/nva-client/releases)
 
 gui client for [nva](https://github.com/ali322/nva) cli, no environment pre-requirements
 
+English | [简体中文](./README_CN.md)
+
 ## Snapshot
-![snapshot](./snapshot/snapshot.png)
+![snapshot](./snapshot/snapshot_en.png)
 
 ## Installation
 Download from [GitHub Releases](https://github.com/ali322/nva-client/releases) and install it.

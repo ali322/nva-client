@@ -5,7 +5,7 @@ const { readJsonSync } = require('fs-extra')
 const { map } = require('lodash')
 const { join } = require('path')
 
-exports.installPKG = (pkgs = [], path, registry) => {
+exports.installPKG = (pkgs = [], path, registry, locale) => {
   if (pkgs.length > 0) {
     co(function * () {
       yield npminstall({
@@ -18,7 +18,7 @@ exports.installPKG = (pkgs = [], path, registry) => {
       })
     })
       .then(() => {
-        console.log(chalk.green('\n依赖包安装完成'))
+        console.log(chalk.green(`\n${locale === 'cn' ? '依赖包安装完成' : 'all dependencies installed'}`))
       })
       .catch(err => {
         console.log(err)

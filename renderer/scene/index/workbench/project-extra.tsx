@@ -47,17 +47,18 @@ export default class ProjectExtra extends React.Component<any, any>{
     ipcRenderer.removeAllListeners('pkg-upgrade-available')
   }
   renderModal() {
-    const { installPKG } = this.props
+    const { installPKG, locale } = this.props
+    const message = t(locale)
     if (this.modalType === ModalType.addDep) {
       return (
         <div className="py-24 w-100">
           <div className="input-wrapper mb-12 px-20" style={{width: "220px"}}>
-            <input type="text" placeholder="请输入包名" className="input input--sm" onChange={(e: any) => {
+            <input type="text" placeholder={message.typePackage} className="input input--sm" onChange={(e: any) => {
               this.name = e.target.value
             }}/>
           </div>
           <div className="input-wrapper px-20 mb-20" style={{width: "220px"}}>
-            <input type="text" placeholder="请输入版本号" className="input input--sm" onChange={(e: any) => {
+            <input type="text" placeholder={message.typeVersion} className="input input--sm" onChange={(e: any) => {
               this.version = e.target.value
             }}/>
           </div>
@@ -66,11 +67,11 @@ export default class ProjectExtra extends React.Component<any, any>{
               installPKG([`${this.name}@${this.version}`])
               this.modalVisible = false
             }}>
-              <span>确定</span>
+              <span>{message.submit}</span>
             </button>
             <button className="btn btn-secondary px-12"
             onClick={() => this.modalVisible = false}>
-              <span>取消</span>
+              <span>{message.cancel}</span>
             </button>
           </div>
         </div>
@@ -79,18 +80,18 @@ export default class ProjectExtra extends React.Component<any, any>{
     if (this.modalType === ModalType.installDep) {
       return (
         <div className="py-24">
-          <p className="text-center text-md">是否安装项目依赖包</p>
+          <p className="text-center text-md">{message.reinstallDepsNow}</p>
           <div className="d-flex flex-row justify-content-center">
             <button className="btn btn-success px-12 mr-12"
               onClick={() => {
                 installPKG()
                 this.modalVisible = false
               }}>
-              <span>确定</span>
+              <span>{message.submit}</span>
             </button>
             <button className="btn btn-secondary px-12"
               onClick={() => this.modalVisible = false}>
-              <span>取消</span>
+              <span>{message.cancel}</span>
             </button>
           </div>
         </div>
@@ -103,13 +104,13 @@ export default class ProjectExtra extends React.Component<any, any>{
             <div className="d-flex flex-row align-items-center mb-12">
               <div className="upgrade-pkg-label flex-1">
                 <span>{pkg.name}</span>
-                <p className="mb-0 text-sm text-muted">{`新版本: ${pkg.latest} 当前版本: ${pkg.current}`}</p>
+                <p className="mb-0 text-sm text-muted">{`${message.latestVersion}: ${pkg.latest}`}</p>
               </div>
               <button className="btn btn-sm btn-success mx-12" onClick={() => {
                 installPKG([`${pkg.name}@${pkg.latest}`])
                 this.modalVisible = false
               }}>
-                <span>更新</span>
+                <span>{message.update}</span>
               </button>
             </div>
           ))}

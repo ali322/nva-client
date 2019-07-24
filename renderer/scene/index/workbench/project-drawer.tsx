@@ -86,7 +86,7 @@ const StyledDrawer = styled.div`
   }
   
   .drawer-content{
-    width: 260px;
+    width: 280px;
     box-shadow: 2px 0 2px 1px rgba(0,0,0, .2);
     display: flex;
     height: 100%;
