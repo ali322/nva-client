@@ -40,6 +40,7 @@ const Styled = styled.div`
     }
     .toolbar-item {
       background: transparent;
+      outline: none;
       width: 25px;
       line-height: 25px;
       color: rgba(0, 0, 0, 0.6);

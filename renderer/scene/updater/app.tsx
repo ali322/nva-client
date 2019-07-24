@@ -4,6 +4,8 @@ import { observer } from 'mobx-react'
 import { remote } from 'electron'
 import { ipcRenderer } from 'electron'
 import { Toolbar, Progress } from '@/component'
+import t from '@/locale'
+import rootStore from './store'
 
 const win: Electron.BrowserWindow = remote.getCurrentWindow()
 
@@ -11,14 +13,16 @@ const win: Electron.BrowserWindow = remote.getCurrentWindow()
 export default class App extends React.Component<any, any>{
   @observable updateVisible: boolean = false
   @observable updating: boolean = false
-  @observable updatePercent: number = 0
+  @observable updatePercent: number = 50
   @observable downloadSpeed: number = 0
   @observable updateVersion: string = ''
+  locale: string = rootStore.locale
   componentDidMount() {
+    const message = t(this.locale)
     ipcRenderer.on('update-available', (info: any) => {
       this.updateVersion = info.version
-      let notify = new Notification('发现新版本', {
-        body: `发现新版本 v${info.version}`
+      let notify = new Notification(message.updateAvailable, {
+        body: `${message.newVersionFound} v${info.version}`
       })
 
       notify.onclick = () => {
@@ -51,6 +55,7 @@ export default class App extends React.Component<any, any>{
     ipcRenderer.send('download-update')
   }
   render() {
+    const message = t(this.locale)
     return (
       <div className="window updater-window text-center pt-24">
         <Toolbar></Toolbar>
@@ -60,18 +65,18 @@ export default class App extends React.Component<any, any>{
               <Progress value={this.updatePercent}/>
             </div>
             {this.updatePercent < 100 ? 
-              <p className="m-0 py-12">正在下载更新...( {this.downloadSpeed}kb/s )</p>
-              : <p className="m-0 py-12">下载完成应用重启中...</p>}
+              <p className="m-0 py-12 text-md">{message.downloadingUpdates}( {this.downloadSpeed}kb/s )</p>
+              : <p className="m-0 py-12 text-md">{message.downloadedRestart}</p>}
           </div>
         ) : (
           <div className="updater-info">
-            <p className="m-0 py-20">检测到可用版本 v{this.updateVersion} 是否更新?</p>
+            <p className="m-0 py-20 text-md">{message.newVersionFound} v{this.updateVersion} {message.updateOrNot}</p>
             <div className="pt-8">
               <button className="btn btn-success mr-16" onClick={() => this.update()}>
-                <span>确定</span>
+                <span>{message.submit}</span>
               </button>
               <button className="btn btn-secondary" onClick={() =>win.close()}>
-                <span>取消</span>
+                <span>{message.cancel}</span>
               </button>
             </div>
           </div>

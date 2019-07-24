@@ -37,7 +37,7 @@ function createWindow(
     autoHideMenuBar: true,
     transparent: false,
     hasShadow: true,
-    backgroundColor: '#282A30',
+    backgroundColor: '#FFF',
     titleBarStyle: 'default'
   }
   let opts = merge(defaults, options)
@@ -70,7 +70,7 @@ const updaterWindow = ({
   let win = createWindow('updater/index.html', {
     width: 300,
     height: 160,
-    backgroundColor: '#282A30'
+    backgroundColor: '#FFF'
   })
   win.webContents.on('did-finish-load', (): void => {
     win.webContents.send('update-version', version)

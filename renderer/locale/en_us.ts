@@ -52,5 +52,10 @@ export default {
   reinstallDepsNow: 'Reinstall Dependencies Now?',
   latestVersion: 'Latest Version',
   spa: 'single page application',
-  mpa: 'multi page application'
+  mpa: 'multi page application',
+  // updater
+  updateAvailable: 'Updates available',
+  updateOrNot: 'Update or not?',
+  downloadingUpdates: 'Downloading updates...',
+  downloadedRestart: 'Downloaded And Restart...'
 }

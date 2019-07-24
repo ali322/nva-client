@@ -52,5 +52,11 @@ export default {
   reinstallDepsNow: '是否立刻重装依赖包?',
   latestVersion: '最新版本',
   spa: '单页应用',
-  mpa: '多页应用'
+  mpa: '多页应用',
+  // updater
+  newVersionFound: '发现新版本',
+  updateAvailable: '发现可用更新',
+  updateOrNot: '是否更新?',
+  downloadingUpdates: '下载更新包中...',
+  downloadedRestart: '下载完成即将重启...'
 }
