@@ -31,4 +31,6 @@ build_script:
 test: off
 
 artifacts:
-  - path: output
+  - path: output/nva-client-1.0.{build}.exe
+  - path: output/nva-client-1.0.{build}.zip
+  - path: output/latest.yml

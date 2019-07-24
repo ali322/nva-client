@@ -54,6 +54,7 @@ export default {
   spa: 'single page application',
   mpa: 'multi page application',
   // updater
+  newVersionFound: 'New version found',
   updateAvailable: 'Updates available',
   updateOrNot: 'Update or not?',
   downloadingUpdates: 'Downloading updates...',
