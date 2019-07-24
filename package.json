@@ -1,6 +1,6 @@
 {
   "name": "nva-client",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "gui client form nva",
   "main": "dist/main/index.js",
   "scripts": {
