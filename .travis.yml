@@ -42,6 +42,7 @@ deploy:
   file_glob: true
   file: output/*
   skip_cleanup: true
+  overwrite: true
   draft: true
   on:
     tags: true
