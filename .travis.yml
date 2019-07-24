@@ -43,4 +43,4 @@ deploy:
   file: output/*
   skip_cleanup: true
   on:
-    tags: false
+    tags: true
