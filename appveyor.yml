@@ -1,4 +1,4 @@
-version: 1.0.6
+version: 1.0.{build}
 
 branches:
   only:
@@ -29,3 +29,6 @@ build_script:
   - npm run pack:win
 
 test: off
+
+artifacts:
+  - path: output
