@@ -31,14 +31,6 @@ build_script:
 test: off
 
 artifacts:
-  - path: output/nva-client-*.exe
-  - path: output/nva-client-*.zip
+  - path: output/*.exe
+  - path: output/*.zip
   - path: output/latest.yml
-
-deploy:
-  - provider: GitHub
-    draft: true
-    prerelease: false
-    on:
-      branch: master                # release from master branch only
-      APPVEYOR_REPO_TAG: false
