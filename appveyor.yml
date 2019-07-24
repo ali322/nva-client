@@ -24,6 +24,7 @@ install:
   - node --version
 
 build_script:
+  - npm run dll
   - npm run build
   - npm run pack:win
 

@@ -30,6 +30,7 @@ install:
 - npm install -g xvfb-maybe
 - npm install
 script:
+- npm run dll
 - npm run build
 - npm run pack:osx
 branches:
