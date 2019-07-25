@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const release = 'https://api.github.com/repos/ali322/nva-client/releases/latest'
-const url = 'https://github.com/Molunerfinn/PicGo/releases/latest'
+const url = 'https://github.com/ali322/nva-client/releases/latest'
 
 const compareVersion = (current: any, latest: any): boolean => {
   const currentVersion = current.split('.').map((item: string): number => parseInt(item))
