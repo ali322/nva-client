@@ -36,12 +36,3 @@ script:
 branches:
   only:
   - master
-deploy:
-  provider: releases
-  api_key: $GH_TOKEN
-  file_glob: true
-  file: output/*
-  draft: false
-  skip_cleanup: true
-  on:
-    tags: true

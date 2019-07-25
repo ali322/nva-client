@@ -27,17 +27,3 @@ build_script:
   - npm run pack:win
 
 test: off
-
-artifacts:
-  - path: output/*.exe
-  - path: output/*.zip
-  - path: output/latest.yml
-deploy:
-  - provider: GitHub
-    auth_token:
-     secure: qr3bRff59VNsFYU/6a5/L/eGYbUm23WAdY0s2GwcL0Pj6szL/evXBV16JBgZe3Cx 
-    draft: false
-    prerelease: false
-    on:
-      branch: master
-      appveyor_repo_tag: true
