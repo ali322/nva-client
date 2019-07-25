@@ -17,7 +17,7 @@ const start = () => {
   return builder.build({
     targets: platform(),
     config: {
-      productName: 'nav-client',
+      productName: 'nva-client',
       appId: 'org.alilab.nva.client',
       asar: true,
       directories: {
@@ -56,6 +56,7 @@ const start = () => {
         provider: 'github',
         repo: 'nva-client',
         owner: 'ali322',
+        releaseType: 'release'
       },
       nsis: {
         perMachine: true,
