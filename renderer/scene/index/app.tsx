@@ -1,32 +1,24 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { NavLink, Route, Switch } from 'react-router-dom'
-import { ipcRenderer } from 'electron'
+import { ipcRenderer, shell } from 'electron'
 import { inject } from 'mobx-react'
 import { Icon, Toolbar } from '@/component'
 import t from '@/locale'
 import WorkBench from './workbench'
 import Setup from './setup'
+import PKGJson from '../../../package.json'
 
 export default class App extends React.Component<any, any>{
   componentDidMount() {
-    ipcRenderer.on('update-error', (err: Error) => {
-      console.error(err)
-    })
-
-    ipcRenderer.on('update-not-available', (info: any) => {
-      console.log('暂无可用更新', info)
-    })
-
+    ipcRenderer.send('check-update', PKGJson.version)
     ipcRenderer.on('update-available', (_: any, info: any) => {
       let notify = new Notification('发现新版本', {
         body: `发现新版本 v${info.version}`
       })
 
       notify.onclick = () => {
-        ipcRenderer.send('open-window', 'updater', {
-          version: info.version
-        })
+        shell.openExternal(info.url)
       }
     })
   }

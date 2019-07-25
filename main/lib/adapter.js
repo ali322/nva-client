@@ -1,5 +1,4 @@
 const downloadGitRepo = require('download-git-repo')
-const updater = require('@suen/electron-updater')
 
 function download (repo, dest) {
   return new Promise(function (resolve, reject) {
@@ -11,6 +10,5 @@ function download (repo, dest) {
 }
 
 module.exports = {
-  download,
-  updater
+  download
 }

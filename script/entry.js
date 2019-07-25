@@ -3,7 +3,7 @@ const { scenePath } = require('./constant')
 const { join } = require('path')
 const fromPairs = require('lodash/fromPairs')
 
-const entry = ['index', 'updater']
+const entry = ['index']
 
 module.exports = fromPairs(
   entry.map(key => {

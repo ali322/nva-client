@@ -1,8 +1,7 @@
-import { BrowserWindow, app } from 'electron'
+import { BrowserWindow } from 'electron'
 import { join, posix } from 'path'
 import { merge, find } from 'lodash'
 import { format, URL } from 'url'
-import attachUpdater from './updater'
 
 export function opendedWindow(): string[] {
   let allWins = BrowserWindow.getAllWindows()
@@ -86,14 +85,6 @@ export function openWindow(
     return updaterWindow(query)
   } else {
     let win = createWindow()
-    if (process.env.NODE_ENV === 'production') {
-      let updater: any = attachUpdater(win)
-      updater.checkForUpdates()
-      app.on('before-quit', (): void => {
-        updater.removeAllListeners()
-        updater = null
-      })
-    }
     return win
   }
 }

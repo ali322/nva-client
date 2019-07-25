@@ -5,7 +5,7 @@ import { checkPKG } from './pkg'
 import { opendedWindow, openWindow, getWindow } from './window'
 import { checkValid, generateProject } from './index'
 import { GenerateProject } from '../interface'
-import attachUpdater from './updater'
+import checkUpdate from './updater'
 
 ipcMain.on('check-pkgs', async (evt: any, msg: any): Promise<void> => {
   if (msg.ignoreCheck) return
@@ -38,11 +38,13 @@ ipcMain.on(
   }
 )
 
-ipcMain.on('check-update', (): void => {
-  let win: any = getWindow('index')
+ipcMain.on('check-update', (evt: any, msg: string): void => {
+  checkUpdate(msg).then((ret: any): void => {
+    if (ret) {
+      evt.sender.send('update-available', ret)
+    }
+  })
   if (process.env.NODE_ENV === 'production') {
-    let updater = attachUpdater(win)
-    updater.checkForUpdates()
   }
 })
 

@@ -1,82 +1,37 @@
-import { ipcMain, dialog } from 'electron'
-import { AppUpdater } from 'electron-updater'
-import { updater } from './adapter.js'
-import { getWindow } from './window'
-// const logger = require('electron-log')
+import axios from 'axios'
 
-const autoUpdater = updater({
-  type: 'github',
-  options: {
-    username: 'ali322',
-    repo: 'nva-client',
-    log: true
+const release = 'https://api.github.com/repos/ali322/nva-client/releases/latest'
+const url = 'https://github.com/Molunerfinn/PicGo/releases/latest'
+
+const compareVersion = (current: any, latest: any): boolean => {
+  const currentVersion = current.split('.').map((item: string): number => parseInt(item))
+  const latestVersion = latest.split('.').map((item: string): number => parseInt(item))
+  let pass = false
+  for (let i = 0; i < 3; i++) {
+    if (currentVersion[i] < latestVersion[i]) {
+      pass = true
+    }
   }
-})
+  return pass
+}
 
-autoUpdater.autoDownload = false
-// autoUpdater.autoInstallOnAppQuit =
-// logger.transports.file.level = 'info'
-// autoUpdater.logger = logger
-
-// autoUpdater.updateConfigPath = require('path').join(
-//   __dirname,
-//   '..',
-//   '..',
-//   'dev-app-update.yml'
-// )
-
-export default (win: Electron.BrowserWindow): AppUpdater => {
-  autoUpdater.once('checking-for-update', (): void => {
-    if (win.isDestroyed() === false) {
-      win.webContents.send('checking-for-update')
+export default async (version: string): Promise<any> => {
+  try {
+    const ret = await axios.get(release)
+    if (ret.status === 200) {
+      const latest = ret.data.name
+      const hasUpdates = compareVersion(version, latest)
+      if (hasUpdates) {
+        return {
+          version: latest,
+          url
+        }
+      }
+      return null
+    } else {
+      return null
     }
-  })
-
-  autoUpdater.once('update-available', (info: any): void => {
-    // dialog.showErrorBox('update-available', feedURL ? feedURL.toString() : 'none')
-    if (win) {
-      win.webContents.send('update-available', info)
-    }
-  })
-
-  autoUpdater.once('update-not-available', (info: any): void => {
-    // dialog.showErrorBox('update-not-available', '')
-    if (win) {
-      win.webContents.send('update-not-available', info)
-    }
-  })
-
-  autoUpdater.on('error', (err: Error): void => {
-    dialog.showErrorBox('err', err.message)
-    if (win) {
-      win.webContents.send('updater-error', err)
-    }
-  })
-
-  autoUpdater.on('download-progress', (info: any): void => {
-    let win = getWindow('updater') as Electron.BrowserWindow
-    win.webContents.send('download-progress', info)
-  })
-
-  autoUpdater.once('update-downloaded', (): void => {
-    try {
-      autoUpdater.quitAndInstall(true, true)
-    } catch (err) {
-      console.error(err)
-      dialog.showErrorBox('error', JSON.stringify(err))
-    }
-  })
-
-  ipcMain.on('download-update', (): void => {
-    autoUpdater
-      .downloadUpdate()
-      .then((): void => {
-        console.log('wait for post download operation')
-      })
-      .catch((err: any): void => {
-        dialog.showErrorBox('error', JSON.stringify(err))
-      })
-  })
-
-  return autoUpdater
+  } catch (err) {
+    return null
+  }
 }

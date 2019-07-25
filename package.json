@@ -10,7 +10,6 @@
     "build:renderer": "cross-env NODE_ENV=production webpack --config script/webpack.prod.js",
     "build:main": "cross-env NODE_ENV=production webpack --config script/webpack.main.js",
     "build": "npm run build:main && npm run build:renderer",
-    "dev": "webpack-dev-server --inline --port 8080 --config script/webpack.dev.js",
     "pack:osx": "cross-env BUILD_TARGET=darwin node script/builder.js",
     "pack:win": "cross-env BUILD_TARGET=win32 node script/builder.js",
     "pack": "npm run pack:osx && npm run pack:win",
@@ -20,7 +19,6 @@
   "author": "alichen",
   "license": "MIT",
   "devDependencies": {
-    "@suen/electron-updater": "^1.0.5",
     "@types/form-data": "^2.2.1",
     "@types/fs-extra": "^5.0.5",
     "@types/lodash": "^4.14.122",
@@ -45,7 +43,6 @@
     "electron-debug": "^2.0.0",
     "electron-devtools-installer": "^2.2.4",
     "electron-log": "^3.0.1",
-    "electron-updater": "3.0.4",
     "eslint": "^5.15.1",
     "eslint-config-prettier": "^4.1.0",
     "eslint-config-standard": "^12.0.0",
