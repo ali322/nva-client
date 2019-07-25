@@ -1,7 +1,17 @@
 import { ipcMain, dialog } from 'electron'
-import { autoUpdater, AppUpdater } from 'electron-updater'
+import { AppUpdater } from 'electron-updater'
+import { updater } from './adapter.js'
 import { getWindow } from './window'
 // const logger = require('electron-log')
+
+const autoUpdater = updater({
+  type: 'github',
+  options: {
+    username: 'ali322',
+    repo: 'nva-client',
+    log: true
+  }
+})
 
 autoUpdater.autoDownload = false
 // autoUpdater.autoInstallOnAppQuit =

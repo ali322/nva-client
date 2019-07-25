@@ -52,12 +52,12 @@ const start = () => {
         icon: resolve('script/icons/nva.ico'),
         artifactName: '${productName}-${version}.${ext}'
       },
-      publish: {
+      publish: [{
         provider: 'github',
         repo: 'nva-client',
         owner: 'ali322',
         releaseType: 'release'
-      },
+      }],
       nsis: {
         perMachine: true,
         oneClick: false,
