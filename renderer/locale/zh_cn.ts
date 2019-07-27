@@ -48,6 +48,7 @@ export default {
   workspaceAndName: '工作空间 + 名称',
   submit: '提交',
   cancel: '取消',
+  initProjectFailed: '初始化项目失败',
   update: '更新',
   reinstallDepsNow: '是否立刻重装依赖包?',
   latestVersion: '最新版本',

@@ -42,7 +42,10 @@ export default class WorkBench extends React.Component<any, any>{
   @autobind
   createProject(project: any) {
     const {addHistory, saveOpened} = this.props
-    addHistory(project)
+    const index = findIndex(histories, project)
+    if (index < 0) {
+      addHistory(project)
+    }
     saveOpened(project)
     this.modalActived = false
     this.drawerActived = false
@@ -125,12 +128,13 @@ export default class WorkBench extends React.Component<any, any>{
     return null
   }
   render() {
+    const message = t(this.props.locale)
     return (
       <div className="h-100 border-box">
         {this.renderOperations()}
         {this.renderProject()}
         <Modal width={520} active={this.modalActived} onClose={() => this.modalActived = false}>
-          <ProjectForm onCreate={this.createProject} onCancel={() => this.modalActived = false}></ProjectForm>
+          <ProjectForm onCreate={this.createProject} onFail={() => this.toast.error(message.initProjectFailed)} onCancel={() => this.modalActived = false}></ProjectForm>
         </Modal>
         <Toast ref={(ref: any) => this.toast = ref}></Toast>
       </div>

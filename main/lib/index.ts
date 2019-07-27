@@ -4,7 +4,7 @@ import {
   existsSync,
   constants,
   readJsonSync,
-  mkdirSync
+  ensureDirSync
 } from 'fs-extra'
 import { writePKGJson } from './pkg'
 import { download } from './adapter.js'
@@ -48,9 +48,15 @@ export async function generateProject(
   path: string,
   repo: string,
   options: Record<string, any>
-): Promise<void> {
+): Promise<boolean> {
   const dest = join(path, name)
-  mkdirSync(dest)
-  await download(repo, dest)
-  writePKGJson(name, dest, options)
+  try {
+    ensureDirSync(dest)
+    await download(repo, dest)
+    writePKGJson(name, dest, options)
+    return true
+  } catch (err) {
+    console.log('err', err)
+    return false
+  }
 }

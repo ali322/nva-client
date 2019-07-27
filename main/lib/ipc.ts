@@ -31,20 +31,19 @@ ipcMain.on('check-valid', (evt: any, val: any): void => {
   evt.returnValue = checkValid(val)
 })
 
-ipcMain.on(
-  'generate-project',
-  (_: any, { name, path, repo, answers }: GenerateProject): void => {
-    generateProject(name, path, repo, answers)
+ipcMain.on('generate-project',async (evt: any, { name, path, repo, answers }: GenerateProject): void => {
+    const isCreated = await generateProject(name, path, repo, answers)
+    evt.sender.send('project-generated', isCreated)
   }
 )
 
 ipcMain.on('check-update', (evt: any, msg: string): void => {
-  checkUpdate(msg).then((ret: any): void => {
-    if (ret) {
-      evt.sender.send('update-available', ret)
-    }
-  })
   if (process.env.NODE_ENV === 'production') {
+    checkUpdate(msg).then((ret: any): void => {
+      if (ret) {
+        evt.sender.send('update-available', ret)
+      }
+    })
   }
 })
 

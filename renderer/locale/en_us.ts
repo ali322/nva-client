@@ -48,6 +48,7 @@ export default {
   workspaceAndName: 'Workspace + Name',
   submit: 'Submit',
   cancel: 'Cancel',
+  initProjectFailed: 'Init project failed',
   update: 'Update',
   reinstallDepsNow: 'Reinstall Dependencies Now?',
   latestVersion: 'Latest Version',

@@ -43,7 +43,8 @@ export default class ProjectForm extends React.Component<any, any>{
   }
   @autobind
   submit() {
-    const { onCreate } = this.props
+    const { onCreate, onFail } = this.props
+    if (this.downloading) return
     this.downloading = true
     ipcRenderer.send('generate-project', {
       name: this.name,
@@ -53,11 +54,18 @@ export default class ProjectForm extends React.Component<any, any>{
         ver: this.version
       }
     })
-    let project = {
-      name: this.name,
-      path: this.saved
-    }
-    onCreate(project)
+    ipcRenderer.on('project-generated', (_: any, isCreated: boolean): void => {
+      this.downloading = false
+      if (isCreated) {
+        let project = {
+          name: this.name,
+          path: this.saved
+        }
+        onCreate(project)
+      } else {
+        onFail()
+      }
+    })
   }
   render() {
     const { onCancel, locale } = this.props
@@ -126,10 +134,10 @@ export default class ProjectForm extends React.Component<any, any>{
               </div>
             </div>
             <div className="text-center py-12">
-              <button className="btn btn-success mr-12" onClick={this.submit}>
-                <span className="px-20">{message.submit}</span>
+              <button className="btn btn-success mr-12" type="button" disabled={this.downloading} onClick={this.submit}>
+                <span className="px-20">{this.downloading ? `${message.initProject}...` : message.submit}</span>
               </button>
-              <button className="btn btn-secondary" onClick={onCancel}>
+              <button className="btn btn-secondary" type="button" onClick={onCancel}>
                 <span className="px-20">{message.cancel}</span>
               </button>
             </div>
