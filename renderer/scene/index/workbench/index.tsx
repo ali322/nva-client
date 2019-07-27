@@ -41,7 +41,7 @@ export default class WorkBench extends React.Component<any, any>{
   }
   @autobind
   createProject(project: any) {
-    const {addHistory, saveOpened} = this.props
+    const {addHistory, saveOpened, histories} = this.props
     const index = findIndex(histories, project)
     if (index < 0) {
       addHistory(project)
