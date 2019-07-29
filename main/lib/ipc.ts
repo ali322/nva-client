@@ -31,7 +31,7 @@ ipcMain.on('check-valid', (evt: any, val: any): void => {
   evt.returnValue = checkValid(val)
 })
 
-ipcMain.on('generate-project',async (evt: any, { name, path, repo, answers }: GenerateProject): void => {
+ipcMain.on('generate-project',async (evt: any, { name, path, repo, answers }: GenerateProject): Promise<void> => {
     const isCreated = await generateProject(name, path, repo, answers)
     evt.sender.send('project-generated', isCreated)
   }
