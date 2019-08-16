@@ -96,7 +96,14 @@ export function spawn(
       worker.stdin.write(data)
     }
   })
-  worker.on('error', (err: Error): void => console.log(err))
+  worker.on('error', (err: Error): void => {
+   err
+      .toString()
+      .split(/\n/)
+      .forEach((v: string): void => {
+        t.writeln(v)
+      })
+  })
   worker.stdout.on('data', handleData)
 
   return worker
