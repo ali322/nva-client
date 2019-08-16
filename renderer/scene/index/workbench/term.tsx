@@ -64,6 +64,7 @@ export default class Term extends React.PureComponent<any, any>{
 }
 
 const StyledTerm = styled.div`
+  overflow: hidden;
   .terminal-cursor {
     display: none;
   }
