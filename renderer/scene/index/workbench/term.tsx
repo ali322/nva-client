@@ -20,16 +20,14 @@ win.on('close', () => {
 
 export default class Term extends React.PureComponent<any, any>{
   componentDidMount() {
-    if (!term) {
-      term = new Terminal({
-        cursorBlink: true,
-        cursorStyle: 'bar',
-        fontSize: 12,
-        rendererType: 'canvas',
-        lineHeight: 1.2,
-        fontFamily: 'courier-new, courier, monospace'
-      })
-    }
+    term = new Terminal({
+      cursorBlink: true,
+      cursorStyle: 'bar',
+      fontSize: 12,
+      rendererType: 'canvas',
+      lineHeight: 1.2,
+      fontFamily: 'courier-new, courier, monospace'
+    })
     let termBox = document.getElementById('xterm-container')
     term.open(termBox)
     setImmediate(() => {
@@ -65,6 +63,8 @@ export default class Term extends React.PureComponent<any, any>{
 
 const StyledTerm = styled.div`
   overflow: hidden;
+  width: 924px !important;
+  height: 652px !important;
   .terminal-cursor {
     display: none;
   }
