@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { NavLink, Route, Switch } from 'react-router-dom'
+import { NavLink, Route } from 'react-router-dom'
+import { CacheRoute, CacheSwitch } from '@/component/cache-route'
 import { ipcRenderer, shell } from 'electron'
 import { inject } from 'mobx-react'
 import { Icon, Toolbar } from '@/component'
@@ -28,10 +29,10 @@ export default class App extends React.Component<any, any>{
         <Toolbar></Toolbar>
         <LayoutSidebar></LayoutSidebar>
         <div className="flex-1 position-relative pt-24 bg-white">
-          <Switch>
-            <Route path="/" exact component={WorkBench} />
+          <CacheSwitch>
+            <CacheRoute path="/" exact component={WorkBench} />
             <Route path="/setup" component={Setup} />
-          </Switch>
+          </CacheSwitch>
         </div>
       </div>
     )
