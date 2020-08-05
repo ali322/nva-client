@@ -2,6 +2,7 @@ const merge = require('webpack-merge')
 const webpack = require('webpack')
 const base = require('./webpack.base')
 const mapValues = require('lodash/mapValues')
+const { ESBuildPlugin } = require('esbuild-loader')
 const TidyStatsPlugin = require('tidy-stats-webpack-plugin')
 const InjectHtmlPlugin = require('inject-html-webpack-plugin')
 const { join, posix } = require('path')
@@ -29,7 +30,8 @@ module.exports = merge(base, {
         use: [
           'react-hot-loader/webpack',
           // 'babel-loader',
-          'ts-loader'
+          // 'ts-loader'
+          'esbuild-loader'
         ]
       }
     ]
@@ -45,6 +47,7 @@ module.exports = merge(base, {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new ESBuildPlugin(),
     // new TidyStatsPlugin({ ignoreAssets: true }),
     new webpack.DllReferencePlugin({
       context: __dirname,

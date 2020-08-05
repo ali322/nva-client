@@ -1,6 +1,9 @@
 process.stdout.isTTY = true
 
 const chalk = require('chalk')
+const { join } = require('path')
+const fs = require('fs')
+const rimraf = require('rimraf')
 let argv = require('yargs').argv
 const locale = argv.locale || 'en'
 let path = argv.path
@@ -21,6 +24,16 @@ if (pkgs) {
   })
 } else {
   pkgs = defaultPKG(path)
+  const nodeModules = join(path, 'node_modules')
+  const packageLock = join(path, 'package-lock.json')
+  if (fs.existsSync(nodeModules)) {
+    console.log(chalk.yellow(`${locale === 'cn' ? '正在删除 node_moduls 目录' : 'deleting node_modules directory'}\n`))
+    rimraf.sync(nodeModules)
+  }
+  if (fs.existsSync(packageLock)) {
+    console.log(chalk.yellow(`${locale === 'cn' ? '正在删除 package-lock.json 文件' : 'deleting package-lock.json file'}`))
+    rimraf.sync(packageLock)
+  }
   console.log(chalk.yellow(locale === 'cn' ? `正在安装依赖包, 请耐心等待` : 'installing dependencies, please wait'))
 }
 installPKG(pkgs, path, registry, locale)

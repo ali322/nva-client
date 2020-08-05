@@ -8,6 +8,7 @@ module.exports = {
   target: 'electron-renderer',
   mode: isProd ? 'production' : 'development',
   module: {
+    exprContextCritical: false,
     rules: [
       {
         test: /\.mjs$/,

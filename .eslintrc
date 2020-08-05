@@ -16,9 +16,11 @@
   "rules": {
     "space-before-function-paren": "off",
     "node/no-deprecated-api": "off",
+    "no-return-assign": "off",
     "@typescript-eslint/indent": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/explicit-member-accessibility": "off",
-    "@typescript-eslint/no-var-requires": "off"
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/explicit-function-return-type": "off"
   }
 }

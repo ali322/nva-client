@@ -24,7 +24,7 @@ class ProjectStore {
 
   @ignore
   @observable
-  ready: boolean = true
+  working: boolean = false
 
   @action.bound
   saveState(key: string, val: any): void {
@@ -46,7 +46,9 @@ class RootStore {
     previewPort: 3000,
     upgradeCheck: false,
     strict: true,
-    profile: false
+    profile: false,
+    memoryLimit: -1,
+    env: ''
   }
   project: ProjectStore
   constructor() {

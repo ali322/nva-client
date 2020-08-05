@@ -19,7 +19,7 @@ interface TComponent {
   currentRunning: stores.root.project.currentRunning,
   percentage: stores.root.project.percentage,
   finished: stores.root.project.finished,
-  ready: stores.root.project.ready,
+  working: stores.root.project.working,
   saveState: stores.root.project.saveState,
   userProjects: stores.root.userProjects,
   saveUserProjects: stores.root.saveUserProjects
@@ -30,14 +30,19 @@ export default class Project extends React.Component<any, any> {
   extra!: any
   toast!: any
   @autobind
+  stop() {
+    const { saveState } = this.props
+    saveState('running', false)
+    saveState('currentRunning', '')
+    saveState('finished', false)
+    saveState('percentage', 0)
+    this.term.stop()
+  }
+  @autobind
   run(act: string) {
     const { running, saveState } = this.props
     if (running) {
-      saveState('running', false)
-      saveState('currentRunning', '')
-      saveState('finished', false)
-      saveState('percentage', 0)
-      this.term.stop()
+      this.stop()
     } else {
       let cb = (this as TComponent)[act]
       saveState('running', true)
@@ -59,7 +64,9 @@ export default class Project extends React.Component<any, any> {
     if (userSettings.profile) {
       args.push('--profile')
     }
-    this.term.run('dev.js', args, (data: any) => {
+    const env = userSettings.memoryLimit > 0
+      ? { 'NODE_OPTIONS': `--max_old_space_size=${userSettings.memoryLimit}` } : {}
+    this.term.run('dev.js', args, env, (data: any) => {
       let matches = data.toString().match(/\[(\d+)%\]/)
       if (matches) {
         saveState('percentage', parseInt(matches[1]))
@@ -72,7 +79,7 @@ export default class Project extends React.Component<any, any> {
   }
   @autobind
   build() {
-    const { path, userSettings, saveState, locale} = this.props
+    const { path, userSettings, saveState, locale } = this.props
     let args = [
       '--locale', locale,
       '--path', path,
@@ -82,14 +89,18 @@ export default class Project extends React.Component<any, any> {
     if (userSettings.profile) {
       args.push('--profile')
     }
-    this.term.run('build.js', args, (data: any) => {
+    const env = userSettings.memoryLimit > 0
+      ? { 'NODE_OPTIONS': `--max_old_space_size=${userSettings.memoryLimit}` } : {}
+    this.term.run('build.js', args, env, (data: any) => {
       let matches = data.toString().match(/\[(\d+)%\]/)
       if (matches) {
         saveState('percentage', parseInt(matches[1]))
       }
-      if (data.toString().includes(locale ==='cn' ? '项目打包完成' : 'release project finished')) {
+      if (data.toString().includes(locale === 'cn' ? '项目打包完成' : 'release project finished')) {
         saveState('percentage', 100)
         saveState('finished', true)
+        saveState('running', false)
+        saveState('currentRunning', '')
       }
     })
   }
@@ -108,26 +119,37 @@ export default class Project extends React.Component<any, any> {
   @autobind
   installPKG(pkgs: any[] = []) {
     const { saveState, locale } = this.props
-    saveState('ready', false)
+    saveState('working', true)
     this.term.stop()
     const { path, userSettings } = this.props
     const args = [
       '--locale', locale,
-      '--path', path, 
+      '--path', path,
       '--registry', userSettings.npmRegistry
     ]
     this.term.run(
-      'install.js', 
+      'install.js',
       pkgs.length > 0 ? args.concat(['--pkg', pkgs.join(',')]) : args,
+      {},
       (data: any) => {
-        if (data.toString().includes(locale ==='cn' ? '依赖包安装完成' : 'all dependencies installed')) {
-          saveState('ready', true)
+        if (data.toString().includes(locale === 'cn' ? '依赖包安装完成' : 'all dependencies installed')) {
+          saveState('working', false)
         }
       }
     )
   }
+  @autobind
+  runCMD(arg: string) {
+    const { saveState } = this.props
+    saveState('working', true)
+    this.term.stop()
+    const { path } = this.props
+    this.term.exec(arg, path, (_: any) => { }, () => {
+      saveState('working', false)
+    })
+  }
   renderHeader() {
-    const { toggleDrawer, running, currentRunning, finished, path, name, locale } = this.props
+    const { toggleDrawer, running, currentRunning, finished, path, name, locale, userSettings } = this.props
     const message = t(locale)
     return (
       <div className="header-border py-12 bg-white d-flex">
@@ -138,7 +160,7 @@ export default class Project extends React.Component<any, any> {
           <Icon type="arrow-dropdown"></Icon>
         </button>
         <div className="flex-1 text-left pl-12">
-          <button 
+          <button
             className={`btn mr-12 ${running && currentRunning === 'dev' ? 'btn-outline-danger' : 'btn-outline-primary'}`}
             onClick={() => this.run('dev')}
             disabled={currentRunning !== 'dev' && running}>
@@ -158,9 +180,12 @@ export default class Project extends React.Component<any, any> {
             <span className="pl-4">{currentRunning === 'preview' ? message.stopPreview : message.previewProject}</span>
           </button>
         </div>
-        <ProjectExtra 
-          installPKG={this.installPKG} 
-          canReport={finished} path={path} 
+        <ProjectExtra
+          runCMD={this.runCMD}
+          installPKG={this.installPKG}
+          running={running}
+          userSettings={userSettings}
+          finished={finished} path={path}
           ref={(ref: any) => this.extra = ref} />
       </div>
     )

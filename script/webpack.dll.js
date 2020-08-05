@@ -18,7 +18,7 @@ const vendorJS = [
 ]
 
 const vendorCSS = [
-  'xterm/dist/xterm.css',
+  'xterm/css/xterm.css',
   'normalize.css/normalize.css',
   'ionicons/dist/css/ionicons.min.css'
 ]

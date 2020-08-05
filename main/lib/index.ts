@@ -3,11 +3,8 @@ import {
   accessSync,
   existsSync,
   constants,
-  readJsonSync,
-  ensureDirSync
+  readJsonSync
 } from 'fs-extra'
-import { writePKGJson } from './pkg'
-import { download } from './adapter.js'
 
 export function checkValid(path: string): boolean | Record<string, any> {
   if (!path) return false
@@ -41,22 +38,4 @@ export function checkNodePathValid(path: string): boolean {
     return false
   }
   return true
-}
-
-export async function generateProject(
-  name: string,
-  path: string,
-  repo: string,
-  options: Record<string, any>
-): Promise<boolean> {
-  const dest = join(path, name)
-  try {
-    ensureDirSync(dest)
-    await download(repo, dest)
-    writePKGJson(name, dest, options)
-    return true
-  } catch (err) {
-    console.log('err', err)
-    return false
-  }
 }

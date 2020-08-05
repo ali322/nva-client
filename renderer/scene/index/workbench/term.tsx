@@ -3,11 +3,12 @@ import styled from 'styled-components'
 import { remote } from 'electron'
 import { Terminal } from 'xterm'
 // import { throttle } from 'lodash'
-import * as fit from 'xterm/lib/addons/fit/fit'
+// import * as fit from 'xterm/lib/addons/fit/fit'
+import { FitAddon } from 'xterm-addon-fit'
 // import {  FitAddon } from 'xterm-addon-fit'
-import { spawn } from '@/lib/index'
+import { spawn, exec } from '@/lib/index'
 
-Terminal.applyAddon(fit)
+// Terminal.applyAddon(fit)
 
 let win: any = remote.getCurrentWindow()
 let term: any
@@ -18,7 +19,7 @@ win.on('close', () => {
   worker.kill()
 })
 
-export default class Term extends React.PureComponent<any, any>{
+export default class Term extends React.PureComponent<any, any> {
   componentDidMount() {
     term = new Terminal({
       cursorBlink: true,
@@ -29,10 +30,13 @@ export default class Term extends React.PureComponent<any, any>{
       fontFamily: 'courier-new, courier, monospace'
     })
     let termBox = document.getElementById('xterm-container')
-    term.open(termBox)
-    setImmediate(() => {
-      term.fit()
-    })
+    if (termBox) {
+      const fitAddon = new FitAddon()
+      term.loadAddon(fitAddon)
+      term.open(termBox)
+      fitAddon.fit()
+      // term.fit()
+    }
   }
   componentWillUnmount() {
     win = null
@@ -40,17 +44,35 @@ export default class Term extends React.PureComponent<any, any>{
   }
   run(
     cmd: string,
-    args: any,
-    handleData: any = () => {},
-    done: any = () => {}
+    args: any[],
+    env: Record<string, any> = {},
+    handleData: any = () => { },
+    done: any = () => { }
   ) {
     term.clear()
-    worker = spawn(cmd, args, term, handleData, done)
+    this.focus()
+    console.log('env', env)
+    worker = spawn(cmd, args, env, term, handleData, done)
+  }
+  exec(
+    cmd: string,
+    path: string,
+    handleData: any = () => { },
+    done: any = () => { }
+  ) {
+    term.clear()
+    this.focus()
+    worker = exec(cmd, path, term, handleData, done)
+  }
+  focus() {
+    term.focus()
   }
   stop() {
     term.clear()
     if (worker) {
+      worker.connected && worker.disconnect()
       worker.kill()
+      worker = null
     }
   }
   render() {

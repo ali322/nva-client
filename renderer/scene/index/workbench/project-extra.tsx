@@ -2,75 +2,123 @@ import * as React from 'react'
 import { ipcRenderer } from 'electron'
 import { observable } from 'mobx'
 import { observer, inject } from 'mobx-react'
-import { Modal, Toast, Icon } from '@/component'
-import { isEmpty } from '@/lib'
+import { Modal, Toast, Icon, Select } from '@/component'
+import { isEmpty, saveDeps } from '@/lib'
 import t from '@/locale'
+import { checkUpdate } from '@/lib/pkg'
 
 enum ModalType {
   addDep,
+  runCMD,
   upgradeDep,
   installDep,
   report
 }
 
+const pkgTypes = [
+  { label: 'production', value: 'prod' },
+  { label: 'development', value: 'dev' }
+]
+
 @inject((stores: any) => ({
   locale: stores.root.locale
 }))
 @observer
-export default class ProjectExtra extends React.Component<any, any>{
+export default class ProjectExtra extends React.Component<any, any> {
   @observable modalVisible: boolean = false
   @observable modalType: ModalType = ModalType.addDep
-  @observable upgradePKG: Array<any> = []
+  @observable upgradePKG: any[] = []
   @observable name: string = ''
   @observable version: string = ''
+  @observable pkgType: string = pkgTypes[0].value
+  @observable cmd: string = ''
   toast!: any
   componentDidMount() {
     const { path } = this.props
+    this.checkEmpty(path)
+  }
+  componentWillReceiveProps(nextProps: any) {
+    if (nextProps.path !== this.props.path) {
+      this.checkEmpty(nextProps.path)
+    }
+  }
+  componentWillUnmount() {
+    ipcRenderer.removeAllListeners('pkg-upgrade-available')
+  }
+  checkEmpty(path: string) {
+    const { userSettings } = this.props
     isEmpty('node_modules', path)
       .then((empty: boolean) => {
         if (empty) {
           this.modalType = ModalType.installDep
           this.modalVisible = true
         } else {
-          ipcRenderer.send('check-pkgs', {
-            path: path,
-            ignoreCheck: false
-          })
-          ipcRenderer.on('pkg-upgrade-available', (_: any, msg: any) => {
-            this.upgradePKG = msg
-          })
+          if (userSettings.upgradeCheck) {
+            checkUpdate(path, userSettings.npmRegistry).then((ret: any) => {
+              this.upgradePKG = ret
+            })
+          }
         }
       })
       .catch((err: Error) => console.error(err))
   }
-  componentWillUnmount() {
-    ipcRenderer.removeAllListeners('pkg-upgrade-available')
-  }
   renderModal() {
-    const { installPKG, locale } = this.props
+    const { installPKG, locale, path, runCMD } = this.props
     const message = t(locale)
     if (this.modalType === ModalType.addDep) {
       return (
         <div className="py-24 w-100">
-          <div className="input-wrapper mb-12 px-20" style={{width: "220px"}}>
+          <div className="input-wrapper mb-12 px-20" style={{ width: '220px' }}>
             <input type="text" placeholder={message.typePackage} className="input input--sm" onChange={(e: any) => {
               this.name = e.target.value
             }}/>
           </div>
-          <div className="input-wrapper px-20 mb-20" style={{width: "220px"}}>
+          <div className="input-wrapper px-20 mb-20" style={{ width: '220px' }}>
             <input type="text" placeholder={message.typeVersion} className="input input--sm" onChange={(e: any) => {
               this.version = e.target.value
             }}/>
           </div>
+          <div className="input-wrapper px-20 mb-20">
+            <Select data={pkgTypes} placeholder="请选择类型" width={100}
+              onChange={(val: any) => {
+                console.log('val', val)
+                this.pkgType = val
+              }} value={this.pkgType}></Select>
+          </div>
           <div className="d-flex flex-row justify-content-center">
             <button className="btn btn-success px-12 mr-12" onClick={() => {
               installPKG([`${this.name}@${this.version}`])
+              saveDeps(path, { [this.name]: this.version }, this.pkgType === 'dev')
               this.modalVisible = false
             }}>
               <span>{message.submit}</span>
             </button>
             <button className="btn btn-secondary px-12"
-            onClick={() => this.modalVisible = false}>
+              onClick={() => this.modalVisible = false}>
+              <span>{message.cancel}</span>
+            </button>
+          </div>
+        </div>
+      )
+    }
+    if (this.modalType === ModalType.runCMD) {
+      return (
+        <div className="py-24">
+          <div className="input-wrapper mb-12 px-20">
+            <input type="text" placeholder="请输入命令" className="input" onChange={(e: any) => {
+              this.cmd = e.target.value
+            }} />
+          </div>
+          <div className="d-flex flex-row justify-content-center">
+            <button className="btn btn-success px-12 mr-12"
+              onClick={() => {
+                runCMD(this.cmd)
+                this.modalVisible = false
+              }}>
+              <span>{message.submit}</span>
+            </button>
+            <button className="btn btn-secondary px-12"
+              onClick={() => this.modalVisible = false}>
               <span>{message.cancel}</span>
             </button>
           </div>
@@ -121,11 +169,12 @@ export default class ProjectExtra extends React.Component<any, any>{
   }
   render() {
     const message = t(this.props.locale)
+    const { running } = this.props
     return (
       <div className="project-extra-container">
         <div className="project-extra h-100 d-flex align-items-center pr-12">
-          {this.upgradePKG.length > 0 ? (
-            <button className="text-muted d-flex align-items-center outline-0 border-0 bg-transparent line-height-25 cursor-pointer" onClick={()=> {
+          {this.upgradePKG.length > 0 && !running ? (
+            <button className="text-muted d-flex align-items-center outline-0 border-0 bg-transparent line-height-25 cursor-pointer" onClick={() => {
               this.modalVisible = true
               this.modalType = ModalType.upgradeDep
             }}>
@@ -133,23 +182,32 @@ export default class ProjectExtra extends React.Component<any, any>{
               <span className="pl-4 text-sm">{message.updateDep}</span>
             </button>
           ) : null}
-          <button className="text-muted d-flex align-items-center outline-0 border-0 bg-transparent line-height-25 cursor-pointer" onClick={() => {
+          {!running && <button className="text-muted d-flex align-items-center outline-0 border-0 bg-transparent line-height-25 cursor-pointer" onClick={() => {
             this.modalVisible = true
             this.modalType = ModalType.installDep
           }}>
             <Icon type="git-compare"></Icon>
             <span className="pl-4 text-sm">{message.reinstallDep}</span>
-          </button>
-          <button className="text-muted d-flex align-items-center outline-0 border-0 bg-transparent line-height-25 cursor-pointer" onClick={() => {
+          </button>}
+          {!running && <button className="text-muted d-flex align-items-center outline-0 border-0 bg-transparent line-height-25 cursor-pointer" onClick={() => {
             this.modalVisible = true
             this.modalType = ModalType.addDep
           }}>
             <Icon type="git-branch"></Icon>
             <span className="pl-4 text-sm">{message.addDep}</span>
-          </button>
+          </button>}
+          {!running && (
+            <button disabled={running} className="text-muted d-flex align-items-center border-0 bg-transparent line-height-25 cursor-pointer" onClick={() => {
+              this.modalVisible = true
+              this.modalType = ModalType.runCMD
+            }}>
+              <Icon type="monitor-outline"></Icon>
+              <span className="pl-4">{message.runCMD}</span>
+            </button>
+          )}
         </div>
         <Modal active={this.modalVisible} width={300} onClose={() => this.modalVisible = false}>
-        {this.renderModal()}
+          {this.renderModal()}
         </Modal>
         <Toast ref={(ref: any) => this.toast = ref}></Toast>
       </div>

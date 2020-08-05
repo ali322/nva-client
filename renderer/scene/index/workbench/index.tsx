@@ -23,13 +23,13 @@ const win: Electron.BrowserWindow = remote.getCurrentWindow()
   }
 })
 @observer
-export default class WorkBench extends React.Component<any, any>{
+export default class WorkBench extends React.Component<any, any> {
   @observable drawerActived: boolean = false
   @observable modalActived: boolean = false
   toast!: any
 
   componentDidMount() {
-    const {histories, opened, saveOpened} = this.props
+    const { histories, opened, saveOpened } = this.props
     if (histories.length > 0 && opened === null) {
       saveOpened(histories[0])
     }
@@ -41,7 +41,7 @@ export default class WorkBench extends React.Component<any, any>{
   }
   @autobind
   createProject(project: any) {
-    const {addHistory, saveOpened, histories} = this.props
+    const { addHistory, saveOpened, histories } = this.props
     const index = findIndex(histories, project)
     if (index < 0) {
       addHistory(project)
@@ -81,7 +81,7 @@ export default class WorkBench extends React.Component<any, any>{
     const { histories, saveHistories, saveOpened, opened } = this.props
     let next = histories.slice()
     next.splice(i, 1)
-    if (histories[i].path === opened.path && histories[i].name === opened.name ) {
+    if (histories[i].path === opened.path && histories[i].name === opened.name) {
       saveOpened(null)
       this.toggledDrawer()
     }
@@ -92,13 +92,13 @@ export default class WorkBench extends React.Component<any, any>{
     const message = t(locale)
     const buttons = (
       <div className={`flex-0 py-12 d-flex align-items-center justify-content-center ${opened ? '' : 'h-100'}`}>
-        <button type="button" 
-          className={`btn btn-success mr-8 btn-normal`} 
+        <button type="button"
+          className={`btn btn-success mr-8 btn-normal`}
           onClick={() => this.modalActived = true}>
           <Icon type="add" size={16}></Icon>
           <span className="pl-4">{message.initProject}</span>
         </button>
-        <button type="button" 
+        <button type="button"
           className={`btn btn-secondary btn-normal`}
           onClick={this.openProject}>
           <Icon type="folder-open" size={16}></Icon>
@@ -110,10 +110,10 @@ export default class WorkBench extends React.Component<any, any>{
       return buttons
     }
     return (
-      <ProjectDrawer active={this.drawerActived} histories={histories} 
-        selectProject={this.selectProject} opened={opened} 
+      <ProjectDrawer active={this.drawerActived} histories={histories}
+        selectProject={this.selectProject} opened={opened}
         toggleActive={this.toggledDrawer} deleteHistory={this.deleteHistory}>
-      {buttons}
+        {buttons}
       </ProjectDrawer>
     )
   }

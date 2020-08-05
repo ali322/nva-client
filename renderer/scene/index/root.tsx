@@ -6,11 +6,11 @@ import rootStore from './store'
 import App from './app'
 
 const Root = () => (
-    <Provider root={rootStore}>
-      <Router>
-        <Route component={App} path="/" />
-      </Router>
-    </Provider>
+  <Provider root={rootStore}>
+    <Router>
+      <Route component={App} path="/" />
+    </Router>
+  </Provider>
 )
 
 export default hot(module)(Root)

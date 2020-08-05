@@ -28,7 +28,10 @@ function createWindow(
     width: 1024,
     height: 768,
     // useContentSize: true,
-    // webPreferences: {webSecurity: false},
+    webPreferences: {
+      webSecurity: true,
+      nodeIntegration: true
+    },
     center: true,
     resizable: false,
     frame: false,
@@ -36,8 +39,7 @@ function createWindow(
     autoHideMenuBar: true,
     transparent: false,
     hasShadow: true,
-    backgroundColor: '#FFF',
-    titleBarStyle: 'default'
+    backgroundColor: '#282A30'
   }
   let opts = merge(defaults, options)
   let win: any = new BrowserWindow(opts)

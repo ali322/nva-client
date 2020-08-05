@@ -1,40 +1,42 @@
 import * as React from 'react'
 import { observer, inject } from 'mobx-react'
 import { observable, computed } from 'mobx'
-import { ipcRenderer, remote } from 'electron'
+import { remote } from 'electron'
 import { join } from 'path'
 import { autobind } from 'core-decorators'
-import { Select } from '@/component'
+import { Select, Progress } from '@/component'
 import t from '@/locale'
-import repos from '@/config/repo'
+import getRepos from '@/config/repo'
+import { generateProject } from '@/lib'
 
 const win: any = remote.getCurrentWindow()
 
-@inject((stores: any) => ({
+@inject((stores: any): any => ({
   locale: stores.root.locale
 }))
 @observer
-export default class ProjectForm extends React.Component<any, any>{
-  @observable repos: any = repos
-  @observable repo: string = ''
+export default class ProjectForm extends React.Component<any, any> {
+  @observable template: string = ''
   @observable name: string = ''
   @observable version: string = ''
   @observable path: string = ''
   @observable downloading: boolean = false
-  @computed get saved() {
+  @observable percent: number = 0
+  @computed get saved(): string {
     return this.path ? join(this.path, this.name) : ''
   }
-  @computed get templates() {
-    return Object.keys(this.repos(this.props.locale)).map((k: any) => ({
+  @computed get templates(): any {
+    const repos = getRepos(this.props.locale)
+    return Object.keys(repos).map((k: any): any => ({
       label: k,
-      value: this.repos[k]
+      value: repos[k]
     }))
   }
   @autobind
   select() {
     const message = t(this.props.locale)
     let workDir = remote.dialog.showOpenDialog(win, {
-      title:  message.chooseWorkspace,
+      title: message.chooseWorkspace,
       properties: ['openDirectory', 'createDirectory']
     })
     if (workDir) {
@@ -42,30 +44,26 @@ export default class ProjectForm extends React.Component<any, any>{
     }
   }
   @autobind
-  submit() {
+  async submit() {
     const { onCreate, onFail } = this.props
     if (this.downloading) return
     this.downloading = true
-    ipcRenderer.send('generate-project', {
-      name: this.name,
-      repo: this.repo,
-      path: this.path,
-      answers: {
-        ver: this.version
+    try {
+      await generateProject(this.name, this.path, this.template, {
+        version: this.version
+      }, (progress: Record<string, any>): void => {
+        this.percent = Math.round(progress.percent * 100)
+      })
+      let project = {
+        name: this.name,
+        path: this.saved
       }
-    })
-    ipcRenderer.on('project-generated', (_: any, isCreated: boolean): void => {
+      onCreate(project)
+    } catch (_) {
+      onFail()
+    } finally {
       this.downloading = false
-      if (isCreated) {
-        let project = {
-          name: this.name,
-          path: this.saved
-        }
-        onCreate(project)
-      } else {
-        onFail()
-      }
-    })
+    }
   }
   render() {
     const { onCancel, locale } = this.props
@@ -82,16 +80,16 @@ export default class ProjectForm extends React.Component<any, any>{
             <div className="form-group d-flex">
               <label className="form-group__label">{message.template}</label>
               <div className="form-group__content">
-                <Select data={this.templates} value={this.repo} placeholder={message.chooseTemplate}
-                  onChange={(repo: any) => this.repo = repo}></Select>
+                <Select data={this.templates} value={this.template} placeholder={message.chooseTemplate}
+                  onChange={(template: any) => this.template = template}></Select>
               </div>
             </div>
             <div className="form-group">
               <label className="form-group__label">{message.name}</label>
               <div className="form-group__content">
                 <div className="input-wrapper">
-                  <input type="text" className="input input--sm" 
-                    placeholder={message.typeName} style={{width: '300px'}}
+                  <input type="text" className="input input--sm"
+                    placeholder={message.typeName} style={{ width: '300px' }}
                     value={this.name} onChange={(evt: any) => this.name = evt.target.value}/>
                 </div>
               </div>
@@ -100,8 +98,8 @@ export default class ProjectForm extends React.Component<any, any>{
               <label className="form-group__label">{message.version}</label>
               <div className="form-group__content">
                 <div className="input-wrapper">
-                  <input type="text" className="input input--sm" 
-                    placeholder={message.typeVersion} style={{width: '300px'}}
+                  <input type="text" className="input input--sm"
+                    placeholder={message.typeVersion} style={{ width: '300px' }}
                     value={this.version} onChange={(evt: any) => this.version = evt.target.value}/>
                 </div>
               </div>
@@ -109,10 +107,10 @@ export default class ProjectForm extends React.Component<any, any>{
             <div className="form-group">
               <label className="form-group__label">{message.workspace}</label>
               <div className="form-group__content">
-                <div className="input-group" style={{width: '300px'}}>
+                <div className="input-group" style={{ width: '300px' }}>
                   <div className="input-wrapper">
-                    <input type="text" className="input input--sm" 
-                      placeholder={message.chooseWorkspace} 
+                    <input type="text" className="input input--sm"
+                      placeholder={message.chooseWorkspace}
                       value={this.path} onChange={(evt: any) => this.path = evt.target.value}/>
                   </div>
                   <div className="input-group-addon p-0 border-0">
@@ -127,12 +125,17 @@ export default class ProjectForm extends React.Component<any, any>{
               <label className="form-group__label">{message.projectPath}</label>
               <div className="form-group__content">
                 <div className="input-wrapper">
-                  <input type="text" className="input input--sm" 
+                  <input type="text" className="input input--sm"
                     placeholder={message.workspaceAndName}
-                    value={this.saved} readOnly style={{width: '300px'}}/>
+                    value={this.saved} readOnly style={{ width: '300px' }}/>
                 </div>
               </div>
             </div>
+            {this.downloading && (
+              <div className="text-center py-4">
+                <Progress value={this.percent} />
+              </div>
+            )}
             <div className="text-center py-12">
               <button className="btn btn-success mr-12" type="button" disabled={this.downloading} onClick={this.submit}>
                 <span className="px-20">{this.downloading ? `${message.initProject}...` : message.submit}</span>

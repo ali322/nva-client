@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-export default ({children, active, width = 300, onClose }: any) => {
+export default ({ children, active, width = 300, onClose }: any) => {
   const StyledModal = styled.div`
     position: absolute;
     top: 0;
@@ -11,7 +11,7 @@ export default ({children, active, width = 300, onClose }: any) => {
     display: flex;
     align-items: center;
     justify-content: center;
-    visibility: ${active ? 'visible': 'hidden'};
+    visibility: ${active ? 'visible' : 'hidden'};
     .modal-mask{
       position: absolute;
       top: 0;
@@ -22,7 +22,7 @@ export default ({children, active, width = 300, onClose }: any) => {
       height: 100%;
       z-index: 999;
       background-color: #000;
-      opacity: ${active ? .6: 0};
+      opacity: ${active ? 0.6 : 0};
       transition: all .3s;
     }
     .modal-inner{

@@ -10,10 +10,11 @@ import WorkBench from './workbench'
 import Setup from './setup'
 import PKGJson from '../../../package.json'
 
-export default class App extends React.Component<any, any>{
+export default class App extends React.Component<any, any> {
   componentDidMount() {
     ipcRenderer.send('check-update', PKGJson.version)
     ipcRenderer.on('update-available', (_: any, info: any) => {
+      // eslint-disable-next-line no-undef
       let notify = new Notification('发现新版本', {
         body: `发现新版本 v${info.version}`
       })
@@ -28,12 +29,12 @@ export default class App extends React.Component<any, any>{
       <div className="h-100 position-relative d-flex">
         <Toolbar></Toolbar>
         <LayoutSidebar></LayoutSidebar>
-        <div className="flex-1 position-relative pt-24 bg-white">
+        <StyledContent className="flex-1 position-relative pt-24 bg-white">
           <CacheSwitch>
             <CacheRoute path="/" exact component={WorkBench} />
             <Route path="/setup" component={Setup} />
           </CacheSwitch>
-        </div>
+        </StyledContent>
       </div>
     )
   }
@@ -42,7 +43,7 @@ export default class App extends React.Component<any, any>{
 @inject((stores: any) => ({
   locale: stores.root.locale
 }))
-class LayoutSidebar extends React.Component<any, any>{
+class LayoutSidebar extends React.Component<any, any> {
   render() {
     const message = t(this.props.locale)
     return (
@@ -68,6 +69,13 @@ class LayoutSidebar extends React.Component<any, any>{
     )
   }
 }
+
+const StyledContent = styled.div`
+  -webkit-user-select: none;
+  &>div{
+    height: 100%;
+  }
+`
 
 const StyledSidebar = styled.div`
   width: 100px;
