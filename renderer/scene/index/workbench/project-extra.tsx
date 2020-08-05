@@ -79,7 +79,7 @@ export default class ProjectExtra extends React.Component<any, any> {
             }}/>
           </div>
           <div className="input-wrapper px-20 mb-20">
-            <Select data={pkgTypes} placeholder="请选择类型" width={100}
+            <Select data={pkgTypes} placeholder={message.selectType} width={100}
               onChange={(val: any) => {
                 console.log('val', val)
                 this.pkgType = val
@@ -105,7 +105,7 @@ export default class ProjectExtra extends React.Component<any, any> {
       return (
         <div className="py-24">
           <div className="input-wrapper mb-12 px-20">
-            <input type="text" placeholder="请输入命令" className="input" onChange={(e: any) => {
+            <input type="text" placeholder={message.typeCMD} className="input" onChange={(e: any) => {
               this.cmd = e.target.value
             }} />
           </div>

@@ -59,5 +59,9 @@ export default {
   updateAvailable: 'Updates available',
   updateOrNot: 'Update or not?',
   downloadingUpdates: 'Downloading updates...',
-  downloadedRestart: 'Downloaded And Restart...'
+  downloadedRestart: 'Downloaded And Restart...',
+  micro: 'micro frontend',
+  runCMD: 'run cammand',
+  selectType: 'select type',
+  typeCMD: 'type cammand'
 }

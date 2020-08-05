@@ -59,5 +59,9 @@ export default {
   updateAvailable: '发现可用更新',
   updateOrNot: '是否更新?',
   downloadingUpdates: '下载更新包中...',
-  downloadedRestart: '下载完成即将重启...'
+  downloadedRestart: '下载完成即将重启...',
+  micro: '微前端',
+  runCMD: '运行命令',
+  selectType: '选择类型',
+  typeCMD: '输入命令'
 }
