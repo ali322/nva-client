@@ -15,7 +15,7 @@
     "pack": "npm run pack:osx && npm run pack:win",
     "publish": "electron-builder --publish onTagOrDraft",
     "rebuild": "electron-rebuild -f -w node-sass",
-    "lint": "eslint renderer"
+    "test": "eslint renderer"
   },
   "author": "alichen",
   "license": "MIT",
