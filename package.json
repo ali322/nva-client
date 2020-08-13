@@ -1,6 +1,6 @@
 {
   "name": "nva-client",
-  "version": "1.0.28",
+  "version": "1.0.30",
   "description": "gui client form nva",
   "main": "dist/main/index.js",
   "scripts": {
@@ -118,7 +118,8 @@
     },
     "win": {
       "target": ["NSIS", "zip"],
-      "icon": "./script/icons/nva.ico"
+      "icon": "./script/icons/nva.ico",
+      "artifactName": "${productName}-${version}.${ext}"
     },
     "dmg": {
       "contents": [
