@@ -164,19 +164,19 @@ export default class Project extends React.Component<any, any> {
             className={`btn mr-12 ${running && currentRunning === 'dev' ? 'btn-outline-danger' : 'btn-outline-primary'}`}
             onClick={() => this.run('dev')}
             disabled={currentRunning !== 'dev' && running}>
-            <Icon type="build" size={14}></Icon>
+            <Icon type={running && currentRunning === 'dev' ? 'pause' : 'play' } size={14}></Icon>
             <span className="pl-4">{currentRunning === 'dev' ? message.stopDev : message.runDev}</span>
           </button>
           <button className={`btn mr-12 ${running && currentRunning === 'build' ? 'btn-outline-danger' : 'btn-outline-warning'}`}
             onClick={() => this.run('build')}
             disabled={currentRunning !== 'build' && running}>
-            <Icon type="save"></Icon>
+            <Icon type={running && currentRunning === 'build' ? 'pause' : 'construct' }></Icon>
             <span className="pl-4">{currentRunning === 'build' ? message.stopRelease : message.releaseProject}</span>
           </button>
           <button className={`btn ${running && currentRunning === 'preview' ? 'btn-outline-danger' : 'btn-outline-success'}`}
             onClick={() => this.run('preview')}
             disabled={currentRunning !== 'preview' && running}>
-            <Icon type="eye"></Icon>
+            <Icon type={running && currentRunning === 'preview' ? 'pause' : 'eye' }></Icon>
             <span className="pl-4">{currentRunning === 'preview' ? message.stopPreview : message.previewProject}</span>
           </button>
         </div>

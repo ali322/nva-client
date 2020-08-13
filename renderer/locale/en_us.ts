@@ -61,7 +61,7 @@ export default {
   downloadingUpdates: 'Downloading updates...',
   downloadedRestart: 'Downloaded And Restart...',
   micro: 'micro frontend',
-  runCMD: 'run cammand',
+  runCMD: 'Run Command',
   selectType: 'select type',
   typeCMD: 'type cammand'
 }

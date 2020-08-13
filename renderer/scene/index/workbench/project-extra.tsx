@@ -178,7 +178,7 @@ export default class ProjectExtra extends React.Component<any, any> {
               this.modalVisible = true
               this.modalType = ModalType.upgradeDep
             }}>
-              <Icon type="git-pull-request"></Icon>
+              <Icon type="download"></Icon>
               <span className="pl-4 text-sm">{message.updateDep}</span>
             </button>
           ) : null}
@@ -186,14 +186,14 @@ export default class ProjectExtra extends React.Component<any, any> {
             this.modalVisible = true
             this.modalType = ModalType.installDep
           }}>
-            <Icon type="git-compare"></Icon>
+            <Icon type="sync"></Icon>
             <span className="pl-4 text-sm">{message.reinstallDep}</span>
           </button>}
           {!running && <button className="text-muted d-flex align-items-center outline-0 border-0 bg-transparent line-height-25 cursor-pointer" onClick={() => {
             this.modalVisible = true
             this.modalType = ModalType.addDep
           }}>
-            <Icon type="git-branch"></Icon>
+            <Icon type="add"></Icon>
             <span className="pl-4 text-sm">{message.addDep}</span>
           </button>}
           {!running && (
@@ -201,8 +201,8 @@ export default class ProjectExtra extends React.Component<any, any> {
               this.modalVisible = true
               this.modalType = ModalType.runCMD
             }}>
-              <Icon type="monitor-outline"></Icon>
-              <span className="pl-4">{message.runCMD}</span>
+              <Icon type="paper-plane"></Icon>
+              <span className="pl-4 text-sm">{message.runCMD}</span>
             </button>
           )}
         </div>

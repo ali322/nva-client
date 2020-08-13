@@ -1,13 +1,13 @@
 import * as React from 'react'
 
-interface props {
+interface Props {
   type: string,
   size?: number,
   color?: string
 }
 
-export default ({type, size = 14, color = 'inhreit'}: props) => {
+export default ({ type, size = 14, color = 'inhreit' }: Props) => {
   return (
-    <i className={`icon ion-md-${type}`} style={{fontSize: `${size}px`, color}}></i>
+    <i className={`icon ion-md-${type}`} style={{ fontSize: `${size}px`, color }}></i>
   )
 }
