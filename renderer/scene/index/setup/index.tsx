@@ -14,7 +14,7 @@ import AdvanceSetup from './advance'
   settings: stores.root.settings,
   saveSettings: stores.root.saveSettings
 }))
-export default class Setup extends React.Component<any, any>{
+export default class Setup extends React.Component<any, any> {
   toast!: any
   @autobind
   saveSettings(key: string, val: any) {
@@ -32,7 +32,7 @@ export default class Setup extends React.Component<any, any>{
               <CommonSetup settings={settings} saveSettings={this.saveSettings}></CommonSetup>
             </TabsPanel>
             <TabsPanel name="project" label={message.projectSettings}>
-              <ProjectSetup settings={settings} saveSettings={this.saveSettings} 
+              <ProjectSetup settings={settings} saveSettings={this.saveSettings}
                 onError={(val: string) => this.toast.error(val)}></ProjectSetup>
             </TabsPanel>
             <TabsPanel name="advance" label={message.advanceSettings}>

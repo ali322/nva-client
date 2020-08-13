@@ -13,9 +13,7 @@ app.on('ready', (): void => {
 })
 
 app.on('window-all-closed', (): void => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
+  app.quit()
 })
 
 app.on('activate', (): void => {
