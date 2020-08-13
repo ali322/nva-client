@@ -9,7 +9,7 @@
     "dll": "rimraf dist/renderer/vendor && cross-env NODE_ENV=production webpack --config script/webpack.dll.js",
     "build:renderer": "cross-env NODE_ENV=production webpack --config script/webpack.prod.js",
     "build:main": "cross-env NODE_ENV=production webpack --config script/webpack.main.js",
-    "build": "npm run build:main && npm run build:renderer",
+    "build": "npm run dll && npm run build:main && npm run build:renderer",
     "pack:osx": "cross-env BUILD_TARGET=darwin node script/builder.js",
     "pack:win": "cross-env BUILD_TARGET=win32 node script/builder.js",
     "pack": "npm run pack:osx && npm run pack:win",
