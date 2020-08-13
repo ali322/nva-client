@@ -104,8 +104,9 @@
     "appId": "org.alilab.nva.client",
     "asar": true,
     "files": [
-      "**/dist/**/*",
-      "**/term/**/*"
+      "!**/*",
+			"./dist/**/*",
+			"./term/**/*"
     ],
     "mac": {
       "target": ["dmg", "zip"]
