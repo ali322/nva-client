@@ -99,5 +99,36 @@
     "lodash": "^4.17.11",
     "npminstall": "^3.20.2",
     "nva-task": "^0.7.15"
+  },
+  "build": {
+    "appId": "org.alilab.nva.client",
+    "asar": true,
+    "files": [
+      "**/dist/**/*",
+      "**/term/**/*"
+    ],
+    "mac": {
+      "target": ["dmg", "zip"]
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        },
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "nsis": {
+      "perMachine": true,
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   }
 }
