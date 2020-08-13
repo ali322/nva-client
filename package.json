@@ -109,7 +109,12 @@
 			"./term/**/*"
     ],
     "mac": {
-      "target": ["dmg", "zip"]
+      "target": ["dmg", "zip"],
+      "icon": "./script/icons/nva.icns"
+    },
+    "win": {
+      "target": ["NSIS", "zip"],
+      "icon": "./script/icons/nva.ico"
     },
     "dmg": {
       "contents": [
@@ -130,6 +135,12 @@
       "perMachine": true,
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
-    }
+    },
+    "publish": [{
+      "provider": "github",
+      "repo": "nva-client",
+      "owner": "ali322",
+      "releaseType": "release"
+    }]
   }
 }
