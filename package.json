@@ -107,10 +107,8 @@
       "output": "./output"
     },
     "files": [
-      "!**/*",
 			"./dist/**/*",
-			"./term/**/*",
-			"./node_modules/**/*"
+			"./term/**/*"
     ],
     "mac": {
       "target": ["dmg", "zip"],
