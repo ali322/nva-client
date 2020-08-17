@@ -1,6 +1,6 @@
 {
   "name": "nva-client",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "description": "gui client form nva",
   "main": "dist/main/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "pack:osx": "cross-env BUILD_TARGET=darwin node script/builder.js",
     "pack:win": "cross-env BUILD_TARGET=win32 node script/builder.js",
     "pack": "npm run pack:osx && npm run pack:win",
-    "publish": "electron-builder --publish onTagOrDraft",
+    "publish": "electron-builder",
     "rebuild": "electron-rebuild -f -w node-sass",
     "test": "eslint renderer"
   },
@@ -104,6 +104,7 @@
     "appId": "org.alilab.nva.client",
     "asar": true,
     "directories": {
+      "app": ".",
       "output": "./output"
     },
     "files": [
