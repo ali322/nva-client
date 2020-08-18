@@ -128,7 +128,7 @@ export default class ProjectExtra extends React.Component<any, any> {
     if (this.modalType === ModalType.installDep) {
       return (
         <div className="py-24">
-          <p className="text-center text-md">{message.reinstallDepsNow}</p>
+          <p className="text-center text-md">{message.installDepsNow}</p>
           <div className="d-flex flex-row justify-content-center">
             <button className="btn btn-success px-12 mr-12"
               onClick={() => {
@@ -187,7 +187,7 @@ export default class ProjectExtra extends React.Component<any, any> {
             this.modalType = ModalType.installDep
           }}>
             <Icon type="sync"></Icon>
-            <span className="pl-4 text-sm">{message.reinstallDep}</span>
+            <span className="pl-4 text-sm">{message.installDep}</span>
           </button>}
           {!running && <button className="text-muted d-flex align-items-center outline-0 border-0 bg-transparent line-height-25 cursor-pointer" onClick={() => {
             this.modalVisible = true
