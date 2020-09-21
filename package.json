@@ -98,7 +98,7 @@
     "fs-extra": "^7.0.1",
     "lodash": "^4.17.11",
     "npminstall": "^3.20.2",
-    "nva-task": "^0.7.16"
+    "nva-task": "^0.7.20"
   },
   "build": {
     "productName": "NVA Client",
