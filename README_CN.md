@@ -1,6 +1,6 @@
 nva-client
 ===
-[![GitHub release](https://img.shields.io/github/release/ali322/nva-client.svg)](https://github.com/ali322/nva-client/releases) [![Build Status](https://travis-ci.org/ali322/nva-client.svg?branch=master)](https://travis-ci.org/ali322/nva-client)
+[![GitHub release](https://img.shields.io/github/release/ali322/nva-client.svg)](https://github.com/ali322/nva-client/releases)
 
 [nva](https://github.com/ali322/nva) 命令行的客户端, 零环境依赖
 
