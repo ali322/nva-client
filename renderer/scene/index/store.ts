@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx'
-import { SyncTrunk, ignore } from 'mobx-sync'
+import { SyncTrunk, ignore } from 'mobx-sync/lib/index'
 
 interface Project {
   [prop: string]: any

@@ -1,28 +1,32 @@
-const { join, sep } = require('path')
-const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
+const { join } = require('path')
+const chalk = require('chalk')
 
 exports.resolve = (...dir) => join(__dirname, '..', ...dir)
 
-exports.urlLoaderOptions = (extract = false) => {
-  let options = {
-    limit: 300
-  }
-  if (extract) {
-    options.outputPath = join('asset', sep)
-    options.publicPath = join('..', 'asset', sep)
-  }
-  return options
-}
+exports.logStats = (proc, data) => {
+  let log = ''
 
-exports.cssLoaders = (extract = false, precessor = '') => {
-  let loaders = ['style-loader', 'css-loader', 'resolve-url-loader']
-  if (precessor) {
-    loaders.push({
-      loader: `${precessor}-loader`,
-      options: { sourceMap: true }
-    })
+  log += chalk.yellow.bold(
+    `┏ ${proc} Process ${new Array(19 - proc.length + 1).join('-')}`
+  )
+  log += '\n\n'
+
+  if (typeof data === 'object') {
+    data
+      .toString({
+        colors: true,
+        chunks: false,
+        modules: false
+      })
+      .split(/\r?\n/)
+      .forEach((line) => {
+        log += '  ' + line + '\n'
+      })
+  } else {
+    log += `  ${data}\n`
   }
-  return extract
-    ? [MiniCSSExtractPlugin.loader].concat(loaders.slice(1))
-    : loaders
+
+  log += '\n' + chalk.yellow.bold(`┗ ${new Array(28 + 1).join('-')}`) + '\n'
+
+  console.log(log)
 }

@@ -3,55 +3,59 @@ import styled from 'styled-components'
 import { CSSTransition } from 'react-transition-group'
 import { Icon } from '@/component'
 
-interface props {
+interface Props {
   active: boolean,
-  histories: Array<any>,
+  histories: any[],
   opened: any,
   children: any,
   toggleActive: any,
   deleteHistory: any,
   selectProject: any
 }
-export default ({active = false, opened, histories, children, toggleActive, deleteHistory, selectProject}: props) => {
+export default ({ active = false, opened, histories, children, toggleActive, deleteHistory, selectProject }: Props) => {
   const defaultStyle: Record<string, any> = {
-    position: 'absolute', top: 0, bottom: 0,
-    zIndex: 999, backgroundColor: '#fff'
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    zIndex: 999,
+    backgroundColor: '#fff'
   }
   return (
     <StyledDrawer>
       {active && (
-        <div className="mask-layer" 
+        <div className="mask-layer"
           onClick={toggleActive}></div>
       )}
       <CSSTransition unmountOnExit timeout={200} in={active} classNames="drawer">
         <div style={defaultStyle}>
           <div className="drawer-content">
             <div className="history flex-1 overflow-y">
-            {histories.map((history: any, i: number) => (
-              <a href="javascript:void(0)" 
-                className="d-block px-12 pt-12 pb-8" 
-                onClick={() => {
-                selectProject(history.path)
-                toggleActive()
-              }}>
-                <div className="history-head w-100 position-relative">
-                  <span className={`flex-1 d-block text-base pr-20 line-height-25 text-truncate ${opened.path === history.path ? 'text-gray font-weight-bold' : 'text-muted'}`}>{history.name}</span>
-                  <button className="delete-history p-0 border-0 bg-transparent" 
-                    onClick={(e: any) => {
-                      e.stopPropagation()
-                      deleteHistory(i)
-                    }}>
-                    <Icon type="trash" size={14}></Icon>
-                  </button>
-                </div>
-                <p className={`m-0 text-sm text-truncate ${opened.path === history.path ? 'text-gray' : 'text-muted'}`}>{history.path}</p>
-              </a>
-            ))}
+              {histories.map((history: any, i: number) => (
+                <span
+                  key={i}
+                  className="d-block px-12 pt-12 pb-8 link"
+                  onClick={() => {
+                    selectProject(history.path)
+                    toggleActive()
+                  }}>
+                  <div className="history-head w-100 position-relative">
+                    <span className={`flex-1 d-block text-base pr-20 line-height-25 text-truncate ${opened.path === history.path ? 'text-gray font-weight-bold' : 'text-muted'}`}>{history.name}</span>
+                    <button className="delete-history p-0 border-0 bg-transparent"
+                      onClick={(e: any) => {
+                        e.stopPropagation()
+                        deleteHistory(i)
+                      }}>
+                      <Icon type="trash" size={14}></Icon>
+                    </button>
+                  </div>
+                  <p className={`m-0 text-sm text-truncate ${opened.path === history.path ? 'text-gray' : 'text-muted'}`}>{history.path}</p>
+                </span>
+              ))}
             </div>
             {children}
           </div>
         </div>
-    </CSSTransition>
+      </CSSTransition>
     </StyledDrawer>
   )
 }
@@ -92,7 +96,7 @@ const StyledDrawer = styled.div`
     height: 100%;
     flex-direction: column;
     .history{
-      & > a {
+      & > span {
         color: inherit;
         text-decoration: none;
         .history-head {

@@ -2,8 +2,8 @@ import * as React from 'react'
 import Icon from '@/component/icon'
 import { some, reject, includes } from 'lodash'
 
-interface props {
-  data: Array<any>,
+interface Props {
+  data: any[],
   onChange: any,
   value: string | string[],
   placeholder?: string,
@@ -12,7 +12,7 @@ interface props {
   searchable?: boolean
 }
 
-export default ({ data, onChange, value, width = 300, mutiple = false, searchable = false, placeholder = '' }: props) => {
+export default ({ data, onChange, value, width = 300, mutiple = false, searchable = false, placeholder = '' }: Props) => {
   const [focus, setFocus] = React.useState(false)
   const selected = data.filter((v: any) => Array.isArray(value) ? includes(value, v.value) : v.value === value)
   const [val, setVal] = React.useState(selected)
@@ -54,12 +54,12 @@ export default ({ data, onChange, value, width = 300, mutiple = false, searchabl
           <ul className="list__options">
             {data.filter((item: any) => {
               return query ? item.label.startsWith(query) : true
-            }).map((item: any) => (
-              <li className="list__item" onClick={() => {
+            }).map((item: any, i: number) => (
+              <li className="list__item" key={i} onClick={() => {
                 let next
                 if (mutiple) {
-                  next = some(val, { value: item.value }) ?
-                    reject(val, { value: item.value }) : val.concat([item])
+                  next = some(val, { value: item.value })
+                    ? reject(val, { value: item.value }) : val.concat([item])
                 } else {
                   next = [item]
                 }
@@ -79,4 +79,3 @@ export default ({ data, onChange, value, width = 300, mutiple = false, searchabl
     </div>
   )
 }
-

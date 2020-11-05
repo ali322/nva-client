@@ -148,8 +148,8 @@ export default class ProjectExtra extends React.Component<any, any> {
     if (this.modalType === ModalType.upgradeDep) {
       return (
         <div className="py-24 px-16">
-          {this.upgradePKG.map((pkg: any) => (
-            <div className="d-flex flex-row align-items-center mb-12">
+          {this.upgradePKG.map((pkg: any, i: number) => (
+            <div className="d-flex flex-row align-items-center mb-12" key={i}>
               <div className="upgrade-pkg-label flex-1">
                 <span>{pkg.name}</span>
                 <p className="mb-0 text-sm text-muted">{`${message.latestVersion}: ${pkg.latest}`}</p>

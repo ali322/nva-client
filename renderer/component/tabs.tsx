@@ -1,24 +1,24 @@
 import * as React from 'react'
 
-interface IProps {
+interface Props {
   className?: string,
   value: string,
   children: any,
   center?: boolean,
-  onChange?: (val:string, index: number) => void
+  onChange?: (val: string, index: number) => void
 }
 
-interface IState{
+interface State{
   active: string
 }
 
-class Tabs extends React.Component<IProps, IState> {
+class Tabs extends React.Component<Props, State> {
   state = {
     active: this.props.value,
     propActive: ''
   }
   static getDerivedStateFromProps(nextProps: any, prevState: any) {
-    if (nextProps.value != prevState.propActive) {
+    if (nextProps.value !== prevState.propActive) {
       return {
         active: nextProps.value,
         propActive: nextProps.value
@@ -32,20 +32,20 @@ class Tabs extends React.Component<IProps, IState> {
     return (
       <div className={`tabs-list ${className || ''}`}>
         <ul className="navs navs-tabs navs--light navs--horizontal">
-        {React.Children.map(children, (child: any, i: number) => {
-          const { label, name } = child.props
-          return (
-            <li role="presentation" className={`navs__item ${name === active ? 'navs__item--checked' : ''}`}>
-              <a href="javascript:void(0)" 
-                onClick={() => {
-                  this.setState({active: name})
-                  onChange && onChange(name, i)
-                }}
-                className="navs-link text-base"
-                >{label}</a>
-            </li>
-          )
-        })}
+          {React.Children.map(children, (child: any, i: number) => {
+            const { label, name } = child.props
+            return (
+              <li role="presentation" className={`navs__item ${name === active ? 'navs__item--checked' : ''}`} key={i}>
+                <span
+                  onClick={() => {
+                    this.setState({ active: name })
+                    onChange && onChange(name, i)
+                  }}
+                  className="navs-link text-base link"
+                >{label}</span>
+              </li>
+            )
+          })}
         </ul>
       </div>
     )
@@ -57,30 +57,31 @@ class Tabs extends React.Component<IProps, IState> {
       <div className={`tabs ${center ? 'tabs--center' : ''}`}>
         {this.renderNav()}
         <div className="tab-content">
-        {React.Children.map(children, (child: any) => React.cloneElement(child, {
-          active: child.props.name === active
-        }))}
+          {React.Children.map(children, (child: any, i: number) => React.cloneElement(child, {
+            key: i,
+            active: child.props.name === active
+          }))}
         </div>
-      </div>  
+      </div>
     )
   }
 }
 
-interface IPanelProps {
+interface PanelProps {
   children: any,
   active?: boolean,
   name: string,
   label: string
 }
 
-const TabsPanel = ({active = false, children}: IPanelProps) => {
+const TabsPanel = ({ active = false, children }: PanelProps) => {
   return (
     <div className={`tab-pane ${active && 'active'}`}>{children}</div>
   )
 }
 
 export {
-  TabsPanel 
+  TabsPanel
 }
 
 export default Tabs

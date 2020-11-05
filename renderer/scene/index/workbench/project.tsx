@@ -200,7 +200,7 @@ export default class Project extends React.Component<any, any> {
           <div className="process-leading flex-1">
             <p className="m-0 line-height-25 pl-20">
               <label className="m-0 pr-8 text-sm">{message.projectPath}:</label>
-              <a href="javascript:void(0)" className="text-muted text-sm">{path}</a>
+              <span className="text-muted text-sm link">{path}</span>
             </p>
           </div>
         </div>

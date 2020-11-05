@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { shell, remote  } from 'electron'
+import { shell, remote } from 'electron'
 import { inject, observer } from 'mobx-react'
 import { observable } from 'mobx'
 import { join } from 'path'
@@ -15,7 +15,7 @@ const cachePath = join(homedir(), '.npminstall_tarball')
   locale: stores.root.locale
 }))
 @observer
-export default class Advance extends React.Component<any, any>{
+export default class Advance extends React.Component<any, any> {
   @observable modalActived: boolean = false
   render() {
     const openPath = (path: string) => {
@@ -27,7 +27,7 @@ export default class Advance extends React.Component<any, any>{
         <div className="d-flex align-items-center py-16">
           <div className="text-right text-md align-middle flex-1 pr-20">{message.npmCache}</div>
           <div className="flex-3">
-            <a href="javascript:void(0)" className="text-md" onClick={() => openPath(cachePath)}>{cachePath}</a>
+            <span className="text-md link" onClick={() => openPath(cachePath)}>{cachePath}</span>
           </div>
         </div>
         <div className="d-flex align-items-center py-16">

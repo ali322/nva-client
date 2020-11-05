@@ -27,9 +27,9 @@ export default class Common extends React.Component<any, any> {
         <div className="d-flex align-items-center py-16">
           <div className="text-right text-md align-middle flex-1 pr-20">{message.currentVersion}</div>
           <div className="flex-3">
-            <a href="javascript:void(0)" className="text-md" onClick={() => {
+            <span className="text-md link" onClick={() => {
               ipcRenderer.send('check-update', PKGJson.version)
-            }}>{PKGJson.version}</a>
+            }}>{PKGJson.version}</span>
           </div>
         </div>
         <div className="d-flex align-items-center py-16">

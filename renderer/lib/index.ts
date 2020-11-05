@@ -50,6 +50,7 @@ export function exec(
 
 export function execFile(cmd: string, args: any[], env: Record<string, any>): any {
   const file = join(__dirname, '..', '..', 'term', cmd)
+  console.log('file', __dirname)
   let worker
   if (process.env.NODE_ENV === 'development') {
     worker = require('child_process').fork(join(file), args, {

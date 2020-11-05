@@ -44,7 +44,7 @@ function createWindow(
   let opts = merge(defaults, options)
   let win: any = new BrowserWindow(opts)
   if (process.env.NODE_ENV === 'development') {
-    win.loadURL(`http://localhost:8080/renderer/scene/${path}`)
+    win.loadURL(`http://localhost:8080/${path}`)
     win.webContents.openDevTools()
   } else {
     let url = format({
