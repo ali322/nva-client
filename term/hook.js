@@ -23,7 +23,7 @@ module.exports = (locale) => {
       })
     },
     afterBuild() {
-      console.log(chalk.yellow(locale === 'cn' ? '项目打包完成' : 'release project finished'))
+      console.log(chalk.yellow(locale === 'cn' ? '项目打包完成' : 'build project finished'))
     }
   }
   return hooks

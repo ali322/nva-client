@@ -5,8 +5,8 @@
   "main": "dist/main/index.js",
   "scripts": {
     "clean": "rimraf dist/renderer",
-    "pack:osx": "cross-env BUILD_TARGET=darwin node script/builder.js",
-    "pack:win": "cross-env BUILD_TARGET=win32 node script/builder.js",
+    "pack:osx": "cross-env BUILD_TARGET=darwin node script/packer.js",
+    "pack:win": "cross-env BUILD_TARGET=win32 node script/packer.js",
     "pack": "npm run pack:osx && npm run pack:win",
     "publish": "electron-builder",
     "rebuild": "electron-rebuild -f -w node-sass",
@@ -72,7 +72,7 @@
     "fs-extra": "^7.0.1",
     "lodash": "^4.17.11",
     "npminstall": "^3.20.2",
-    "nva-task": "1.0.19"
+    "nva-task": "1.0.20"
   },
   "build": {
     "productName": "NVA Client",

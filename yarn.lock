@@ -6719,10 +6719,10 @@ nva-server@^0.7.2:
     serve-favicon "^2.4.2"
     serve-static "^1.12.1"
 
-nva-task@1.0.19:
-  version "1.0.19"
-  resolved "https://registry.npmjs.org/nva-task/-/nva-task-1.0.19.tgz#20598d9c96e61b1a6639e89d658f722b01317d6e"
-  integrity sha512-lRXOxJwqa4o6Fxuznd0TGJVOVuIUSYUlRUwzldsS9c5KPv3qVLLX6RgW1rVGo5jfVE28Z4YamnnUucjrenPKHA==
+nva-task@1.0.20:
+  version "1.0.20"
+  resolved "https://registry.npmjs.org/nva-task/-/nva-task-1.0.20.tgz#34cde69c559c4d9d4451e3970ed3ecba9dbf00f5"
+  integrity sha512-TzeNFA75m5/dT1ImWcoVjVPWmjDDx3MYDk8lFLMrhMCWiiF4XBKFuVOOcGBQjJNQbA1JvgBlFlPPKDd0OpYBpA==
   dependencies:
     ajv "^6.4.0"
     browser-sync "^2.26.13"

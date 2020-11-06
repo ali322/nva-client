@@ -96,7 +96,7 @@ export default class Project extends React.Component<any, any> {
       if (matches) {
         saveState('percentage', parseInt(matches[1]))
       }
-      if (data.toString().includes(locale === 'cn' ? '项目打包完成' : 'release project finished')) {
+      if (data.toString().includes(locale === 'cn' ? '项目打包完成' : 'build project finished')) {
         saveState('percentage', 100)
         saveState('finished', true)
         saveState('running', false)
@@ -171,7 +171,7 @@ export default class Project extends React.Component<any, any> {
             onClick={() => this.run('build')}
             disabled={currentRunning !== 'build' && running}>
             <Icon type={running && currentRunning === 'build' ? 'pause' : 'construct' }></Icon>
-            <span className="pl-4">{currentRunning === 'build' ? message.stopRelease : message.releaseProject}</span>
+            <span className="pl-4">{currentRunning === 'build' ? message.stopBuild : message.buildProject}</span>
           </button>
           <button className={`btn ${running && currentRunning === 'preview' ? 'btn-outline-danger' : 'btn-outline-success'}`}
             onClick={() => this.run('preview')}

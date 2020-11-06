@@ -27,6 +27,6 @@ if (name === 'preview') {
       openBrowser('default', url, context.logText.openBrowserFailed)
     })
   } else {
-    console.log(chalk.red(`${output} ${locale === 'cn' ? '目录不存在, 请先完成打包' : 'directory not existed, please finish release project'}`))
+    console.log(chalk.red(`${output} ${locale === 'cn' ? '目录不存在, 请先完成打包' : 'directory not existed, please finish build project'}`))
   }
 }
