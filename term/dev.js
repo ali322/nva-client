@@ -23,4 +23,5 @@ let tasks = require('nva-task')(context({
   }
 }))
 console.log(chalk.yellow(locale === 'cn' ? '开始启动开发服务...' : 'start launch development service'))
+console.log(' ')
 tasks.dev({ protocol, hostname, port, browser, profile })

@@ -19,4 +19,5 @@ let tasks = require('nva-task')(context({
   }
 }))
 console.log(chalk.yellow(locale === 'cn' ? '开始打包项目, 请耐心等待...' : 'start build project, please wait...'))
+console.log(' ')
 tasks.build({ profile })

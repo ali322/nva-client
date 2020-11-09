@@ -20,7 +20,7 @@ export function exec(
       .toString()
       .split(/\n/)
       .forEach((v: string): void => {
-        t.writeln(v)
+        v !== '' && t.writeln(v)
       })
   })
   if (isFunction(done)) {
@@ -31,7 +31,7 @@ export function exec(
       .toString()
       .split(/\n/)
       .forEach((v: string): void => {
-        t.writeln(v)
+        v !== '' && t.writeln(v)
       })
   })
 
@@ -50,7 +50,6 @@ export function exec(
 
 export function execFile(cmd: string, args: any[], env: Record<string, any>): any {
   const file = join(__dirname, '..', '..', 'term', cmd)
-  console.log('file', __dirname)
   let worker
   if (process.env.NODE_ENV === 'development') {
     worker = require('child_process').fork(join(file), args, {
@@ -88,7 +87,7 @@ export function spawn(
       .toString()
       .split(/\n/)
       .forEach((v: string): void => {
-        t.writeln(v)
+        v !== '' && t.writeln(v)
       })
   })
   if (isFunction(done)) {
@@ -99,7 +98,7 @@ export function spawn(
       .toString()
       .split(/\n/)
       .forEach((v: string): void => {
-        t.writeln(v)
+        v !== '' && t.writeln(v)
       })
   })
 
