@@ -1,6 +1,7 @@
 const { resolve } = require('./util')
+const { join } = require('path')
 const { ESBuildPlugin } = require('esbuild-loader')
-const { distFolder } = require('./constant')
+const { distFolder, sourceFolder } = require('./constant')
 
 const vendorJS = [
   'react',
@@ -54,9 +55,6 @@ const beforeHook = (conf) => {
 module.exports = {
   explicit: true,
   proj: {
-    jsExt: '.tsx',
-    cssExt: '.less',
-    sourceFolder: 'renderer/scene',
     loaderOptions: {
       typescript: {
         transpileOnly: true,
@@ -74,6 +72,11 @@ module.exports = {
   },
   mods: {
     index: {
+      input: {
+        js: join(sourceFolder, 'index', 'index.tsx'),
+        css: join(sourceFolder, 'index', 'index.less'),
+        html: join(sourceFolder, 'index', 'index.html'),
+      },
       vendor: {
         js: 'base',
         css: 'base'
