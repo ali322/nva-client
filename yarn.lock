@@ -4971,9 +4971,9 @@ inherits@2.0.3:
   integrity sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
 
 ini@^1.3.4, ini@^1.3.5, ini@~1.3.0:
-  version "1.3.5"
-  resolved "https://registry.npmjs.org/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
-  integrity sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.8.tgz#a29da425b48806f34767a4efce397269af28432c"
+  integrity sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==
 
 inject-html-webpack-plugin@^1.0.0:
   version "1.0.0"
@@ -6685,10 +6685,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.npmjs.org/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nva-core@^0.7.10:
-  version "0.7.10"
-  resolved "https://registry.npmjs.org/nva-core/-/nva-core-0.7.10.tgz#8a7bc15458abe8a689583b8cb2777adcb1975e21"
-  integrity sha512-eoDnjy9eTQwwR4nxRPayKRY4M1iB6yt2StdJJi7/tKeCjXZ1WYPkGnD0u+Kk0cgyZohaQX/y7bXmTMo1QvKr7Q==
+nva-core@^0.7.11:
+  version "0.7.11"
+  resolved "https://registry.yarnpkg.com/nva-core/-/nva-core-0.7.11.tgz#1d4a97b6ef549a7b154bdd9b54a63588a38c3849"
+  integrity sha512-8+sfoeVvOi7aPzlRqZH2XWw3IYwVixeqDH9Vs7txLJbCHmxXNuP003+MtqfgrkSUh/+ux2TABFeM9Kk6IDCUPw==
   dependencies:
     ajv "^5.4.0"
     chokidar "^2.0.3"
@@ -6719,10 +6719,10 @@ nva-server@^0.7.2:
     serve-favicon "^2.4.2"
     serve-static "^1.12.1"
 
-nva-task@1.0.20:
-  version "1.0.20"
-  resolved "https://registry.npmjs.org/nva-task/-/nva-task-1.0.20.tgz#34cde69c559c4d9d4451e3970ed3ecba9dbf00f5"
-  integrity sha512-TzeNFA75m5/dT1ImWcoVjVPWmjDDx3MYDk8lFLMrhMCWiiF4XBKFuVOOcGBQjJNQbA1JvgBlFlPPKDd0OpYBpA==
+nva-task@1.0.32:
+  version "1.0.32"
+  resolved "https://registry.yarnpkg.com/nva-task/-/nva-task-1.0.32.tgz#fa1827aaf53cf4872a2ca9db23e0748e9b9b6472"
+  integrity sha512-2LdolDe6sUhZXADO8Eo8DAp+Bvdgh8XOHgFtrA3W0jpTGG2DXrdek800jkmq0UmpHGN3U5T7j0EadhDnYsgdLQ==
   dependencies:
     ajv "^6.4.0"
     browser-sync "^2.26.13"
@@ -6744,7 +6744,7 @@ nva-task@1.0.20:
     mini-css-extract-plugin "^1.1.1"
     node-emoji "^1.8.1"
     nodemon "^1.17.3"
-    nva-core "^0.7.10"
+    nva-core "^0.7.11"
     nva-server "^0.7.2"
     nva-util "^0.5.51"
     opn "^5.0.0"
@@ -6753,7 +6753,7 @@ nva-task@1.0.20:
     postcss-loader "^4.0.4"
     postcss-preset-env "^6.7.0"
     pretty-error "^2.1.1"
-    progress-webpack-plugin "^1.0.8"
+    progress-webpack-plugin "^1.0.11"
     resolve-url-loader "^3.1.2"
     sass "^1.26.5"
     sass-loader "^10.0.3"
@@ -8045,10 +8045,10 @@ progress-stream@^1.1.0:
     speedometer "~0.1.2"
     through2 "~0.2.3"
 
-progress-webpack-plugin@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.npmjs.org/progress-webpack-plugin/-/progress-webpack-plugin-1.0.8.tgz#1091252e5024ffd4201ffe08abb44bb9d55b6f70"
-  integrity sha512-dluRd83qDW/ztA20NLdu3YONE4BPG6339+C0GvRR3PygD+yMJ21ItaJ1oDPiacSEanrSZPA+E1ykuI8UIuDzgw==
+progress-webpack-plugin@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/progress-webpack-plugin/-/progress-webpack-plugin-1.0.11.tgz#69d8d541e0cb008415a64f8c197f3d269dc845e3"
+  integrity sha512-wZZdSkr8nbMVqhwourLKYECx3mvI+MsD7Od2bstyAQSnHB9AzFsgfA4t2ZEwuWQVkcW1L99aO7uEMb784PLzUQ==
   dependencies:
     chalk "^2.1.0"
     figures "^2.0.0"
