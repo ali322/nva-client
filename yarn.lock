@@ -1058,13 +1058,12 @@ axios@0.19.0:
     follow-redirects "1.5.10"
     is-buffer "^2.0.2"
 
-axios@^0.18.0:
-  version "0.18.1"
-  resolved "https://registry.npmjs.org/axios/-/axios-0.18.1.tgz#ff3f0de2e7b5d180e757ad98000f1081b87bcea3"
-  integrity sha512-0BfJq4NSfQXd+SkFdrvFbG7addhYSBA2mQwISr46pD6E5iqkWg02RAs8vyTT/j0RTnoYmeXauBuSv1qKwR179g==
+axios@^0.21.1:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+  integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
   dependencies:
-    follow-redirects "1.5.10"
-    is-buffer "^2.0.2"
+    follow-redirects "^1.10.0"
 
 "babel-plugin-styled-components@>= 1":
   version "1.11.1"
@@ -4046,10 +4045,10 @@ follow-redirects@1.5.10:
   dependencies:
     debug "=3.1.0"
 
-follow-redirects@^1.0.0:
-  version "1.13.0"
-  resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.13.0.tgz#b42e8d93a2a7eea5ed88633676d6597bc8e384db"
-  integrity sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA==
+follow-redirects@^1.0.0, follow-redirects@^1.10.0:
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.1.tgz#5f69b813376cee4fd0474a3aba835df04ab763b7"
+  integrity sha512-SSG5xmZh1mkPGyKzjZP8zLjltIfpW32Y5QpdNJyjcfGxK3qo3NDDkZOZSFiGn1A6SclQxY9GzEwAHQ3dmYRWpg==
 
 for-in@^1.0.2:
   version "1.0.2"
@@ -6685,10 +6684,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.npmjs.org/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nva-core@^0.7.10:
-  version "0.7.10"
-  resolved "https://registry.npmjs.org/nva-core/-/nva-core-0.7.10.tgz#8a7bc15458abe8a689583b8cb2777adcb1975e21"
-  integrity sha512-eoDnjy9eTQwwR4nxRPayKRY4M1iB6yt2StdJJi7/tKeCjXZ1WYPkGnD0u+Kk0cgyZohaQX/y7bXmTMo1QvKr7Q==
+nva-core@^0.7.11:
+  version "0.7.11"
+  resolved "https://registry.yarnpkg.com/nva-core/-/nva-core-0.7.11.tgz#1d4a97b6ef549a7b154bdd9b54a63588a38c3849"
+  integrity sha512-8+sfoeVvOi7aPzlRqZH2XWw3IYwVixeqDH9Vs7txLJbCHmxXNuP003+MtqfgrkSUh/+ux2TABFeM9Kk6IDCUPw==
   dependencies:
     ajv "^5.4.0"
     chokidar "^2.0.3"
@@ -6719,10 +6718,10 @@ nva-server@^0.7.2:
     serve-favicon "^2.4.2"
     serve-static "^1.12.1"
 
-nva-task@1.0.20:
-  version "1.0.20"
-  resolved "https://registry.npmjs.org/nva-task/-/nva-task-1.0.20.tgz#34cde69c559c4d9d4451e3970ed3ecba9dbf00f5"
-  integrity sha512-TzeNFA75m5/dT1ImWcoVjVPWmjDDx3MYDk8lFLMrhMCWiiF4XBKFuVOOcGBQjJNQbA1JvgBlFlPPKDd0OpYBpA==
+nva-task@1.0.32:
+  version "1.0.32"
+  resolved "https://registry.yarnpkg.com/nva-task/-/nva-task-1.0.32.tgz#fa1827aaf53cf4872a2ca9db23e0748e9b9b6472"
+  integrity sha512-2LdolDe6sUhZXADO8Eo8DAp+Bvdgh8XOHgFtrA3W0jpTGG2DXrdek800jkmq0UmpHGN3U5T7j0EadhDnYsgdLQ==
   dependencies:
     ajv "^6.4.0"
     browser-sync "^2.26.13"
@@ -6744,7 +6743,7 @@ nva-task@1.0.20:
     mini-css-extract-plugin "^1.1.1"
     node-emoji "^1.8.1"
     nodemon "^1.17.3"
-    nva-core "^0.7.10"
+    nva-core "^0.7.11"
     nva-server "^0.7.2"
     nva-util "^0.5.51"
     opn "^5.0.0"
@@ -6753,7 +6752,7 @@ nva-task@1.0.20:
     postcss-loader "^4.0.4"
     postcss-preset-env "^6.7.0"
     pretty-error "^2.1.1"
-    progress-webpack-plugin "^1.0.8"
+    progress-webpack-plugin "^1.0.11"
     resolve-url-loader "^3.1.2"
     sass "^1.26.5"
     sass-loader "^10.0.3"
@@ -8045,10 +8044,10 @@ progress-stream@^1.1.0:
     speedometer "~0.1.2"
     through2 "~0.2.3"
 
-progress-webpack-plugin@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.npmjs.org/progress-webpack-plugin/-/progress-webpack-plugin-1.0.8.tgz#1091252e5024ffd4201ffe08abb44bb9d55b6f70"
-  integrity sha512-dluRd83qDW/ztA20NLdu3YONE4BPG6339+C0GvRR3PygD+yMJ21ItaJ1oDPiacSEanrSZPA+E1ykuI8UIuDzgw==
+progress-webpack-plugin@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/progress-webpack-plugin/-/progress-webpack-plugin-1.0.11.tgz#69d8d541e0cb008415a64f8c197f3d269dc845e3"
+  integrity sha512-wZZdSkr8nbMVqhwourLKYECx3mvI+MsD7Od2bstyAQSnHB9AzFsgfA4t2ZEwuWQVkcW1L99aO7uEMb784PLzUQ==
   dependencies:
     chalk "^2.1.0"
     figures "^2.0.0"
