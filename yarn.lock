@@ -5876,10 +5876,10 @@ lodash.uniq@^4.5.0:
   resolved "https://registry.npmjs.org/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.4, lodash@^4.17.5:
-  version "4.17.20"
-  resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
-  integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
+lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.4, lodash@^4.17.5:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 log-symbols@^1.0.2:
   version "1.0.2"
@@ -6685,10 +6685,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.npmjs.org/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nva-core@^0.7.10:
-  version "0.7.10"
-  resolved "https://registry.npmjs.org/nva-core/-/nva-core-0.7.10.tgz#8a7bc15458abe8a689583b8cb2777adcb1975e21"
-  integrity sha512-eoDnjy9eTQwwR4nxRPayKRY4M1iB6yt2StdJJi7/tKeCjXZ1WYPkGnD0u+Kk0cgyZohaQX/y7bXmTMo1QvKr7Q==
+nva-core@^0.7.11:
+  version "0.7.19"
+  resolved "https://registry.yarnpkg.com/nva-core/-/nva-core-0.7.19.tgz#9ee6f15d00b6a8a35c52b1f0e928e6c6bc616b85"
+  integrity sha512-JOdTYBNn9Nb4fwq0Lw9Rz4enfVS/Xdli7mN+F5d0yROhMD4XSYzlWfKTG0g7IJGnvlU2oyMvo/WnH+NmhQEqDQ==
   dependencies:
     ajv "^5.4.0"
     chokidar "^2.0.3"
@@ -6719,10 +6719,10 @@ nva-server@^0.7.2:
     serve-favicon "^2.4.2"
     serve-static "^1.12.1"
 
-nva-task@1.0.20:
-  version "1.0.20"
-  resolved "https://registry.npmjs.org/nva-task/-/nva-task-1.0.20.tgz#34cde69c559c4d9d4451e3970ed3ecba9dbf00f5"
-  integrity sha512-TzeNFA75m5/dT1ImWcoVjVPWmjDDx3MYDk8lFLMrhMCWiiF4XBKFuVOOcGBQjJNQbA1JvgBlFlPPKDd0OpYBpA==
+nva-task@1.0.32:
+  version "1.0.32"
+  resolved "https://registry.yarnpkg.com/nva-task/-/nva-task-1.0.32.tgz#fa1827aaf53cf4872a2ca9db23e0748e9b9b6472"
+  integrity sha512-2LdolDe6sUhZXADO8Eo8DAp+Bvdgh8XOHgFtrA3W0jpTGG2DXrdek800jkmq0UmpHGN3U5T7j0EadhDnYsgdLQ==
   dependencies:
     ajv "^6.4.0"
     browser-sync "^2.26.13"
@@ -6744,7 +6744,7 @@ nva-task@1.0.20:
     mini-css-extract-plugin "^1.1.1"
     node-emoji "^1.8.1"
     nodemon "^1.17.3"
-    nva-core "^0.7.10"
+    nva-core "^0.7.11"
     nva-server "^0.7.2"
     nva-util "^0.5.51"
     opn "^5.0.0"
@@ -6753,7 +6753,7 @@ nva-task@1.0.20:
     postcss-loader "^4.0.4"
     postcss-preset-env "^6.7.0"
     pretty-error "^2.1.1"
-    progress-webpack-plugin "^1.0.8"
+    progress-webpack-plugin "^1.0.11"
     resolve-url-loader "^3.1.2"
     sass "^1.26.5"
     sass-loader "^10.0.3"
@@ -8045,10 +8045,10 @@ progress-stream@^1.1.0:
     speedometer "~0.1.2"
     through2 "~0.2.3"
 
-progress-webpack-plugin@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.npmjs.org/progress-webpack-plugin/-/progress-webpack-plugin-1.0.8.tgz#1091252e5024ffd4201ffe08abb44bb9d55b6f70"
-  integrity sha512-dluRd83qDW/ztA20NLdu3YONE4BPG6339+C0GvRR3PygD+yMJ21ItaJ1oDPiacSEanrSZPA+E1ykuI8UIuDzgw==
+progress-webpack-plugin@^1.0.11:
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/progress-webpack-plugin/-/progress-webpack-plugin-1.0.12.tgz#034f28be5243062904a02ddfa53c440970fbbc81"
+  integrity sha512-b0dMK6D7pFicDzSdh+sU0p/gp3n5QAGwjPbgacmYB/eVQpayzf9lKTQLYMnTAbk69fKoXSoVNl/+IkobJblL1A==
   dependencies:
     chalk "^2.1.0"
     figures "^2.0.0"
