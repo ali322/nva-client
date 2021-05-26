@@ -1357,14 +1357,15 @@ browser-sync@^2.26.13:
     yargs "^15.4.1"
 
 browserslist@^4.0.0, browserslist@^4.12.0, browserslist@^4.14.5, browserslist@^4.6.4:
-  version "4.14.6"
-  resolved "https://registry.npmjs.org/browserslist/-/browserslist-4.14.6.tgz#97702a9c212e0c6b6afefad913d3a1538e348457"
-  integrity sha512-zeFYcUo85ENhc/zxHbiIp0LGzzTrE2Pv2JhxvS7kpUb9Q9D38kUX6Bie7pGutJ/5iF5rOxE7CepAuWD56xJ33A==
+  version "4.16.6"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.16.6.tgz#d7901277a5a88e554ed305b183ec9b0c08f66fa2"
+  integrity sha512-Wspk/PqO+4W9qp5iUTJsa1B/QrYn1keNCcEP5OvP7WBwT4KaDly0uONYmC6Xa3Z5IqnUgS0KcgLYu1l74x0ZXQ==
   dependencies:
-    caniuse-lite "^1.0.30001154"
-    electron-to-chromium "^1.3.585"
+    caniuse-lite "^1.0.30001219"
+    colorette "^1.2.2"
+    electron-to-chromium "^1.3.723"
     escalade "^3.1.1"
-    node-releases "^1.1.65"
+    node-releases "^1.1.71"
 
 bs-recipes@1.3.4:
   version "1.3.4"
@@ -1612,10 +1613,10 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001154:
-  version "1.0.30001156"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001156.tgz#75c20937b6012fe2b02ab58b30d475bf0718de97"
-  integrity sha512-z7qztybA2eFZTB6Z3yvaQBIoJpQtsewRD74adw2UbRWwsRq3jIPvgrQGawBMbfafekQaD21FWuXNcywtTDGGCw==
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001219:
+  version "1.0.30001230"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001230.tgz#8135c57459854b2240b57a4a6786044bdc5a9f71"
+  integrity sha512-5yBd5nWCBS+jWKTcHOzXwo5xzcj4ePE/yjtkZyUV1BTUmrBaA9MRGC+e7mxnqXSA90CmCA8L3eKLaSUkt099IQ==
 
 capture-stack-trace@^1.0.0:
   version "1.0.1"
@@ -1968,10 +1969,10 @@ color@^3.0.0:
     color-convert "^1.9.1"
     color-string "^1.5.4"
 
-colorette@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.npmjs.org/colorette/-/colorette-1.2.1.tgz#4d0b921325c14faf92633086a536db6e89564b1b"
-  integrity sha512-puCDz0CzydiSYOrnXpz/PKd69zRrribezjtE9yd4zvytoRc8+RY/KJPvtPFKZS3E3wP6neGyMe0vOTlHO5L3Pw==
+colorette@^1.2.1, colorette@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.2.tgz#cbcc79d5e99caea2dbf10eb3a26fd8b3e6acfa94"
+  integrity sha512-MKGMzyfeuutC/ZJ1cba9NqcNpfeqMUcYmyF1ZFY6/Cn7CNSAKx6a+s48sqLqyAiZuaP2TcqMhoo+dlwFnVxT9w==
 
 colors@^1.3.3:
   version "1.4.0"
@@ -3143,10 +3144,10 @@ electron-rebuild@^1.8.5:
     spawn-rx "^3.0.0"
     yargs "^14.2.0"
 
-electron-to-chromium@^1.3.585:
-  version "1.3.588"
-  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.588.tgz#c6515571737bfb42678115a5eaa818384593a9a5"
-  integrity sha512-0zr+ZfytnLeJZxGgmEpPTcItu5Mm4A5zHPZXLfHcGp0mdsk95rmD7ePNewYtK1yIdLbk8Z1U2oTRRfOtR4gbYg==
+electron-to-chromium@^1.3.723:
+  version "1.3.739"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.739.tgz#f07756aa92cabd5a6eec6f491525a64fe62f98b9"
+  integrity sha512-+LPJVRsN7hGZ9EIUUiWCpO7l4E3qBYHNadazlucBfsXBbccDFNKUBAgzE68FnkWGJPwD/AfKhSzL+G+Iqb8A4A==
 
 electron@4.0.8:
   version "4.0.8"
@@ -3410,7 +3411,7 @@ esbuild@^0.5.16:
 
 escalade@^3.1.1:
   version "3.1.1"
-  resolved "https://registry.npmjs.org/escalade/-/escalade-3.1.1.tgz#d8cfdc7000965c5a0174b4a82eaa5c0552742e40"
+  resolved "https://registry.yarnpkg.com/escalade/-/escalade-3.1.1.tgz#d8cfdc7000965c5a0174b4a82eaa5c0552742e40"
   integrity sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==
 
 escape-goat@^2.0.0:
@@ -6480,10 +6481,10 @@ node-homedir@^1.0.0:
   resolved "https://registry.npmjs.org/node-homedir/-/node-homedir-1.1.1.tgz#736db0b60e3bba8aba68df9927de40a7aabe1075"
   integrity sha512-Xsmf94D/DdeDISAECUaxXVxhh+kHdbOQE4CnP4igo3HXL3BSmmUpD5M7orH434EZZwBTFF2xe5SgsQr/wOBuNw==
 
-node-releases@^1.1.65:
-  version "1.1.65"
-  resolved "https://registry.npmjs.org/node-releases/-/node-releases-1.1.65.tgz#52d9579176bd60f23eba05c4438583f341944b81"
-  integrity sha512-YpzJOe2WFIW0V4ZkJQd/DGR/zdVwc/pI4Nl1CZrBO19FdRcSTmsuhdttw9rsTzzJLrNcSloLiBbEYx1C4f6gpA==
+node-releases@^1.1.71:
+  version "1.1.72"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.72.tgz#14802ab6b1039a79a0c7d662b610a5bbd76eacbe"
+  integrity sha512-LLUo+PpH3dU6XizX3iVoubUNheF/owjXCZZ5yACDxNnPtgFuludV1ZL3ayK1kVep42Rmm0+R9/Y60NQbZ2bifw==
 
 nodemon@^1.17.3:
   version "1.19.4"
@@ -6685,10 +6686,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.npmjs.org/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nva-core@^0.7.10:
-  version "0.7.10"
-  resolved "https://registry.npmjs.org/nva-core/-/nva-core-0.7.10.tgz#8a7bc15458abe8a689583b8cb2777adcb1975e21"
-  integrity sha512-eoDnjy9eTQwwR4nxRPayKRY4M1iB6yt2StdJJi7/tKeCjXZ1WYPkGnD0u+Kk0cgyZohaQX/y7bXmTMo1QvKr7Q==
+nva-core@^0.7.11:
+  version "0.7.19"
+  resolved "https://registry.yarnpkg.com/nva-core/-/nva-core-0.7.19.tgz#9ee6f15d00b6a8a35c52b1f0e928e6c6bc616b85"
+  integrity sha512-JOdTYBNn9Nb4fwq0Lw9Rz4enfVS/Xdli7mN+F5d0yROhMD4XSYzlWfKTG0g7IJGnvlU2oyMvo/WnH+NmhQEqDQ==
   dependencies:
     ajv "^5.4.0"
     chokidar "^2.0.3"
@@ -6719,10 +6720,10 @@ nva-server@^0.7.2:
     serve-favicon "^2.4.2"
     serve-static "^1.12.1"
 
-nva-task@1.0.20:
-  version "1.0.20"
-  resolved "https://registry.npmjs.org/nva-task/-/nva-task-1.0.20.tgz#34cde69c559c4d9d4451e3970ed3ecba9dbf00f5"
-  integrity sha512-TzeNFA75m5/dT1ImWcoVjVPWmjDDx3MYDk8lFLMrhMCWiiF4XBKFuVOOcGBQjJNQbA1JvgBlFlPPKDd0OpYBpA==
+nva-task@1.0.32:
+  version "1.0.32"
+  resolved "https://registry.yarnpkg.com/nva-task/-/nva-task-1.0.32.tgz#fa1827aaf53cf4872a2ca9db23e0748e9b9b6472"
+  integrity sha512-2LdolDe6sUhZXADO8Eo8DAp+Bvdgh8XOHgFtrA3W0jpTGG2DXrdek800jkmq0UmpHGN3U5T7j0EadhDnYsgdLQ==
   dependencies:
     ajv "^6.4.0"
     browser-sync "^2.26.13"
@@ -6744,7 +6745,7 @@ nva-task@1.0.20:
     mini-css-extract-plugin "^1.1.1"
     node-emoji "^1.8.1"
     nodemon "^1.17.3"
-    nva-core "^0.7.10"
+    nva-core "^0.7.11"
     nva-server "^0.7.2"
     nva-util "^0.5.51"
     opn "^5.0.0"
@@ -6753,7 +6754,7 @@ nva-task@1.0.20:
     postcss-loader "^4.0.4"
     postcss-preset-env "^6.7.0"
     pretty-error "^2.1.1"
-    progress-webpack-plugin "^1.0.8"
+    progress-webpack-plugin "^1.0.11"
     resolve-url-loader "^3.1.2"
     sass "^1.26.5"
     sass-loader "^10.0.3"
@@ -8045,10 +8046,10 @@ progress-stream@^1.1.0:
     speedometer "~0.1.2"
     through2 "~0.2.3"
 
-progress-webpack-plugin@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.npmjs.org/progress-webpack-plugin/-/progress-webpack-plugin-1.0.8.tgz#1091252e5024ffd4201ffe08abb44bb9d55b6f70"
-  integrity sha512-dluRd83qDW/ztA20NLdu3YONE4BPG6339+C0GvRR3PygD+yMJ21ItaJ1oDPiacSEanrSZPA+E1ykuI8UIuDzgw==
+progress-webpack-plugin@^1.0.11:
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/progress-webpack-plugin/-/progress-webpack-plugin-1.0.12.tgz#034f28be5243062904a02ddfa53c440970fbbc81"
+  integrity sha512-b0dMK6D7pFicDzSdh+sU0p/gp3n5QAGwjPbgacmYB/eVQpayzf9lKTQLYMnTAbk69fKoXSoVNl/+IkobJblL1A==
   dependencies:
     chalk "^2.1.0"
     figures "^2.0.0"
