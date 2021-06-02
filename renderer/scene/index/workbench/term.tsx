@@ -8,8 +8,6 @@ import { FitAddon } from 'xterm-addon-fit'
 // import {  FitAddon } from 'xterm-addon-fit'
 import { spawn, exec } from '@/lib/index'
 
-// Terminal.applyAddon(fit)
-
 let win: any = remote.getCurrentWindow()
 let term: any
 let worker: any
