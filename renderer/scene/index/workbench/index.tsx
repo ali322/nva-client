@@ -133,7 +133,7 @@ export default class WorkBench extends React.Component<any, any> {
       <div className="h-100 border-box">
         {this.renderOperations()}
         {this.renderProject()}
-        <Modal width={520} active={this.modalActived} onClose={() => this.modalActived = false}>
+        <Modal width={600} active={this.modalActived} onClose={() => this.modalActived = false}>
           <ProjectForm onCreate={this.createProject} onFail={() => this.toast.error(message.initProjectFailed)} onCancel={() => this.modalActived = false}></ProjectForm>
         </Modal>
         <Toast ref={(ref: any) => this.toast = ref}></Toast>

@@ -85,13 +85,16 @@ export default class Term extends React.PureComponent<any, any> {
 
 const StyledTerm = styled.div`
   overflow: hidden;
-  width: 924px !important;
-  height: 652px !important;
+  height: 100%;
+  width: 100%;
+  // width: 924px !important;
+  // height: 652px !important;
   .terminal-cursor {
     display: none;
   }
   .xterm{
     height: 100%;
+    padding: 10px 0 12px;
   }
   .xterm-screen{
     margin-left: 5px;

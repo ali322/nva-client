@@ -20,9 +20,14 @@ const vendorCSS = [
 
 const beforeHook = (conf) => {
   const rules = conf.module.rules.map((rule) => {
-    if (rule.test.toString() === '/\\.(js|jsx)$/') {
+    if (rule.test.toString() === '/\\.js$/') {
       return {
-        test: /\.(js|jsx)/
+        test: /\.js$/
+      }
+    }
+    if (rule.test.toString() === '/\\.jsx$/') {
+      return {
+        test: /\.jsx$/
       }
     }
     if (rule.test.toString() === '/\\.(ts|tsx)$/') {

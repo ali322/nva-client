@@ -32,6 +32,13 @@
   width: 100%;
   position: relative;
 }
+.input-wrapper+.input-group-addon:not(:first-child) {
+  border-left: 0;
+}
+.input-wrapper>input[type=text]{
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
 
 // button
 .btn{
@@ -119,7 +126,7 @@
 }
 
 .input-group-addon > .btn{
-  height: 34px;
+  height: 32px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
