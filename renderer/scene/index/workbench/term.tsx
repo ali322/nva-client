@@ -5,7 +5,6 @@ import { Terminal } from 'xterm'
 // import { throttle } from 'lodash'
 // import * as fit from 'xterm/lib/addons/fit/fit'
 import { FitAddon } from 'xterm-addon-fit'
-// import {  FitAddon } from 'xterm-addon-fit'
 import { spawn, exec } from '@/lib/index'
 
 let win: any = remote.getCurrentWindow()
