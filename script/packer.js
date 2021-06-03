@@ -19,7 +19,7 @@ const start = () => {
     config: {
       productName: 'nva-client',
       appId: 'org.alilab.nva.client',
-      asar: true,
+      asar: false,
       directories: {
         app: resolve('.'),
         output: resolve('output')

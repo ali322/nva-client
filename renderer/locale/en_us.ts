@@ -21,7 +21,7 @@ export default {
   project: 'Project',
   settings: 'Settings',
   // project
-  initProject: 'Init Project',
+  createProject: 'Create Project',
   openProject: 'Open Project',
   runDev: 'Run',
   buildProject: 'Build',
@@ -67,5 +67,7 @@ export default {
   micro: 'micro frontend',
   runCMD: 'Run Command',
   selectType: 'select type',
-  typeCMD: 'type cammand'
+  typeCMD: 'type cammand',
+  resetAppNow: 'Reset App Now?',
+  resetApp: 'Reset App'
 }

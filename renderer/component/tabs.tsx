@@ -41,7 +41,7 @@ class Tabs extends React.Component<Props, State> {
                     this.setState({ active: name })
                     onChange && onChange(name, i)
                   }}
-                  className="navs-link text-base link"
+                  className="navs-link text-base"
                 >{label}</span>
               </li>
             )

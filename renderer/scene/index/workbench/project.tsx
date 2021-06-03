@@ -149,8 +149,9 @@ export default class Project extends React.Component<any, any> {
     })
   }
   renderHeader() {
-    const { toggleDrawer, running, currentRunning, finished, path, name, locale, userSettings } = this.props
+    const { toggleDrawer, running, currentRunning, finished, path, name, locale, working, userSettings } = this.props
     const message = t(locale)
+    console.log('running', currentRunning !== 'build', running, working)
     return (
       <div className="header-border py-12 bg-white d-flex">
         <div className="d-flex justify-content-center align-items-center pl-32">
@@ -163,19 +164,19 @@ export default class Project extends React.Component<any, any> {
           <button
             className={`btn mr-12 ${running && currentRunning === 'dev' ? 'btn-outline-danger' : 'btn-outline-primary'}`}
             onClick={() => this.run('dev')}
-            disabled={currentRunning !== 'dev' && running}>
+            disabled={(currentRunning !== 'dev' && running) || working}>
             <Icon type={running && currentRunning === 'dev' ? 'pause' : 'play' } size={14}></Icon>
             <span className="pl-4">{currentRunning === 'dev' ? message.stopDev : message.runDev}</span>
           </button>
           <button className={`btn mr-12 ${running && currentRunning === 'build' ? 'btn-outline-danger' : 'btn-outline-warning'}`}
             onClick={() => this.run('build')}
-            disabled={currentRunning !== 'build' && running}>
+            disabled={(currentRunning !== 'build' && running) || working}>
             <Icon type={running && currentRunning === 'build' ? 'pause' : 'construct' }></Icon>
             <span className="pl-4">{currentRunning === 'build' ? message.stopBuild : message.buildProject}</span>
           </button>
           <button className={`btn ${running && currentRunning === 'preview' ? 'btn-outline-danger' : 'btn-outline-success'}`}
             onClick={() => this.run('preview')}
-            disabled={currentRunning !== 'preview' && running}>
+            disabled={(currentRunning !== 'preview' && running) || working}>
             <Icon type={running && currentRunning === 'preview' ? 'pause' : 'eye' }></Icon>
             <span className="pl-4">{currentRunning === 'preview' ? message.stopPreview : message.previewProject}</span>
           </button>

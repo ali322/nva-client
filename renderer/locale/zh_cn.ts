@@ -21,7 +21,7 @@ export default {
   project: '项目',
   settings: '设置',
   // project
-  initProject: '初始化项目',
+  createProject: '创建项目',
   openProject: '打开项目',
   runDev: '运行开发',
   buildProject: '打包项目',
@@ -67,5 +67,7 @@ export default {
   micro: '微前端',
   runCMD: '运行命令',
   selectType: '选择类型',
-  typeCMD: '输入命令'
+  typeCMD: '输入命令',
+  resetAppNow: '是否立刻重置应用?',
+  resetApp: '重置应用'
 }

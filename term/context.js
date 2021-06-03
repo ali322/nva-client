@@ -62,6 +62,29 @@ module.exports = function (options = {}) {
           mockAdd: '模拟接口配置 %s 已添加',
           mockDelete: '模拟接口配置 %s 已删除'
         }
-        : null
+        : {
+          buildSuccess: 'compile %s success at %s in %dms',
+          serverRunning: 'server is running at',
+          projectInvalid: 'project config invalid',
+          moduleInvalid: 'module config invalid',
+          fileChanged: `file %s is changed`,
+          serverRestart: 'server restarting...',
+          pathInvalid: '%s not exists',
+          vendorInvalid: 'vendor config invalid',
+          moduleExisted: 'module %s is exists',
+          openBrowserFailed: 'can not open in browser',
+          moduleNotExisted: 'module %s not exists, is it deleted?',
+          fileNotExisted: 'file %s not exists, is it deleted?',
+          portInvalid: 'port has been taken',
+          serverCrashed: 'server crashed',
+          buildWarn: 'compile %s finished at %s in %dms (include warnnings)',
+          buildError: 'compile %s failed at %s in %dms',
+          wrongType: 'unsupported project',
+          mockInvalid: 'mock api config %s invalid',
+          wrongMethod: 'unsupported request method',
+          mockChange: 'mock api config %s is changed',
+          mockAdd: 'mock api config %s is added',
+          mockDelete: 'mock api config is %s deleted'
+        }
   }
 }

@@ -67,13 +67,13 @@ export default class WorkBench extends React.Component<any, any> {
     }
   }
   @autobind
-  openProject() {
-    let projPath = remote.dialog.showOpenDialog(win, {
+  async openProject() {
+    let ret = await remote.dialog.showOpenDialog(win, {
       title: '选择工程目录',
       properties: ['openDirectory']
     })
-    if (projPath) {
-      this.selectProject(projPath[0])
+    if (ret.filePaths) {
+      this.selectProject(ret.filePaths[0])
     }
   }
   @autobind
@@ -96,7 +96,7 @@ export default class WorkBench extends React.Component<any, any> {
           className={`btn btn-success mr-8 btn-normal`}
           onClick={() => this.modalActived = true}>
           <Icon type="add" size={16}></Icon>
-          <span className="pl-4">{message.initProject}</span>
+          <span className="pl-4">{message.createProject}</span>
         </button>
         <button type="button"
           className={`btn btn-secondary btn-normal`}

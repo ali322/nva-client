@@ -12,7 +12,9 @@ exports.installPKG = (pkgs = [], path, registry, locale) => {
         root: path,
         pkgs: pkgs,
         registry: registry,
+        ignoreScripts: true,
         cacheDir: null,
+        detail: true,
         timeout: 10 * 60000,
         streamingTimeout: 10 * 120000
       })

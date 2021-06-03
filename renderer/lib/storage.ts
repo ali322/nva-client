@@ -40,3 +40,7 @@ export function deleteCaptured(file: any): Promise<any> {
     })
   })
 }
+
+export function clearAll(): void {
+  window.localStorage.clear()
+}

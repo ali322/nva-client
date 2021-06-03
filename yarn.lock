@@ -273,7 +273,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/glob@^7.1.1":
+"@types/glob@*", "@types/glob@^7.1.1":
   version "7.1.3"
   resolved "https://registry.nlark.com/@types/glob/download/@types/glob-7.1.3.tgz#e6ba80f36b7daad2c685acd9266382e68985c183"
   integrity sha1-5rqA82t9qtLGhazZJmOC5omFwYM=
@@ -402,10 +402,23 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
+"@types/rimraf@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.nlark.com/@types/rimraf/download/@types/rimraf-3.0.0.tgz?cache=0&sync_timestamp=1621242557818&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Frimraf%2Fdownload%2F%40types%2Frimraf-3.0.0.tgz#b9d03f090ece263671898d57bb7bb007023ac19f"
+  integrity sha1-udA/CQ7OJjZxiY1Xu3uwBwI6wZ8=
+  dependencies:
+    "@types/glob" "*"
+    "@types/node" "*"
+
 "@types/scheduler@*":
   version "0.16.1"
   resolved "https://registry.nlark.com/@types/scheduler/download/@types/scheduler-0.16.1.tgz?cache=0&sync_timestamp=1621242704081&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fscheduler%2Fdownload%2F%40types%2Fscheduler-0.16.1.tgz#18845205e86ff0038517aab7a18a62a6b9f71275"
   integrity sha1-GIRSBehv8AOFF6q3oYpiprn3EnU=
+
+"@types/semver@^7.3.6":
+  version "7.3.6"
+  resolved "https://registry.nlark.com/@types/semver/download/@types/semver-7.3.6.tgz?cache=0&sync_timestamp=1620925383788&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fsemver%2Fdownload%2F%40types%2Fsemver-7.3.6.tgz#e9831776f4512a7ba6da53e71c26e5fb67882d63"
+  integrity sha1-6YMXdvRRKnum2lPnHCbl+2eILWM=
 
 "@types/styled-components@^4.1.16":
   version "4.4.3"
