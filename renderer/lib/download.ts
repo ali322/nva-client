@@ -1,6 +1,9 @@
-const download = require('download')
+import got from 'got'
+import decompress from 'decompress'
+import getStream from 'get-stream'
+import pEvent from 'p-event'
 
-function normalize (repo) {
+function normalize (repo: string) {
   let regex = /^(?:(direct):([^#]+)(?:#(.+))?)$/
   let match = regex.exec(repo)
   let checkout
@@ -18,11 +21,11 @@ function normalize (repo) {
     // eslint-disable-next-line
     regex = /^(?:(github|gitlab|bitbucket):)?(?:(.+):)?([^\/]+)\/([^#]+)(?:#(.+))?$/
     match = regex.exec(repo)
-    let type = match[1] || 'github'
-    let origin = match[2] || null
-    let owner = match[3]
-    let name = match[4]
-    checkout = match[5] || 'master'
+    let type = (match as RegExpExecArray)[1] || 'github'
+    let origin = (match as RegExpExecArray)[2] || null
+    let owner = (match as RegExpExecArray)[3]
+    let name = (match as RegExpExecArray)[4]
+    checkout = (match as RegExpExecArray)[5] || 'master'
 
     if (origin == null) {
       if (type === 'github') {
@@ -44,7 +47,7 @@ function normalize (repo) {
   }
 }
 
-function addProtocol (origin) {
+function addProtocol (origin: string) {
   if (!/^(f|ht)tps?:\/\//i.test(origin)) {
     origin = 'https://' + origin
   }
@@ -52,7 +55,7 @@ function addProtocol (origin) {
   return origin
 }
 
-function getUrl (repo) {
+function getUrl (repo: any) {
   let url
 
   let origin = addProtocol(repo.origin)
@@ -73,17 +76,23 @@ function getUrl (repo) {
   return url
 }
 
-export default (repo, dest) => {
-  let options = {
-    extract: true,
-    strip: 1,
-    mode: '666',
+export default async (origin: string, dest: string, onProgress: (progress: Record<string, any>) => void) => {
+  const repo = normalize(origin)
+  const url = repo.url || getUrl(repo)
+  // const zipName = join(dest, basename(url as string))
+  const stream = got.stream(url as string, {
     headers: {
       accept: 'application/zip'
     },
-    stream: true
-  }
-  repo = normalize(repo)
-  const url = repo.url || getUrl(repo)
-  return download(url, dest, options)
+    isStream: true,
+    responseType: 'buffer'
+  }).on('downloadProgress', onProgress)
+  await pEvent(stream, 'response').then((res) => {
+    return Promise.all([getStream.buffer(stream), res])
+  }).then((result) => {
+    const [data, _] = result
+    return decompress(data, dest, {
+      strip: 1
+    })
+  })
 }

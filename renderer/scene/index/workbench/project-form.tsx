@@ -10,7 +10,7 @@ import { autobind } from 'core-decorators'
 import { Select, Progress, Toast, Confirm } from '@/component'
 import t from '@/locale'
 import getTemplates from '@/config/template'
-import { generateProject } from '@/lib'
+import { generateProject } from '@/lib/project'
 
 const win: any = remote.getCurrentWindow()
 

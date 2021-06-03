@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { NavLink, Route } from 'react-router-dom'
-import { CacheRoute, CacheSwitch } from '@/component/cache-route'
+import CacheRoute, { CacheSwitch } from 'react-router-cache-route'
 import { ipcRenderer, shell } from 'electron'
 import { inject } from 'mobx-react'
 import { Icon, Toolbar } from '@/component'
