@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render } from 'react-dom'
-import Root from './root.tsx'
+import Root from './root'
 
 // configure({
 //   enforceActions: 'always'
