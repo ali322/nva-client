@@ -95,11 +95,7 @@ export default class ProjectSettings extends React.Component<any, any> {
               <input type="text" className="input input--sm" placeholder={message.envMode}
                 style={{ width: '300px' }}
                 value={settings.env} onChange={(e: any) => {
-                  if (checkPort(e.target.value)) {
-                    saveSettings('env', e.target.value)
-                  } else {
-                    onError(`${message.envMode} ${message.isInvalid}`)
-                  }
+                  saveSettings('env', e.target.value)
                 }}/>
             </div>
           </div>
@@ -111,7 +107,7 @@ export default class ProjectSettings extends React.Component<any, any> {
               <input type="text" className="input input--sm" placeholder={message.memLimit}
                 style={{ width: '300px' }}
                 value={settings.memoryLimit} onChange={(e: any) => {
-                  if (checkPort(e.target.value)) {
+                  if (checkMemoryLimit(e.target.value)) {
                     saveSettings('memoryLimit', e.target.value)
                   } else {
                     onError(`${message.memLimit} ${message.isInvalid}`)
