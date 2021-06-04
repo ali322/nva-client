@@ -10,10 +10,14 @@ export default {
   currentVersion: 'Current Version',
   npmRegistry: 'NPM Registry',
   // project settings
+  devHost: 'Development Host',
   devPort: 'Development Port',
+  ssrPort: 'SSR Client Port',
+  envMode: 'Env Mode',
   previewPort: 'Preview Port',
   analyzeCompile: 'Analyze Compilation',
   checkUpdate: 'Check Update',
+  memLimit: 'Memory Limit',
   // advance settings
   npmCache: 'NPM Cache',
   console: 'Console',

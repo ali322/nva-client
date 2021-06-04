@@ -10,10 +10,14 @@ export default {
   official: '官方',
   taobao: '淘宝',
   // project settings
+  devHost: '开发主机名',
   devPort: '开发端口',
+  ssrPort: 'SSR前端端口',
+  envMode: '环境模式',
   previewPort: '预览端口',
   analyzeCompile: '分析编译',
   checkUpdate: '检测更新',
+  memLimit: '内存限制',
   // advance settings
   npmCache: 'NPM缓存',
   console: '控制台',

@@ -43,6 +43,8 @@ class RootStore {
     output: 'dist',
     source: 'src',
     devPort: 3000,
+    devHost: 'localhost',
+    ssrPort: 7000,
     previewPort: 3000,
     upgradeCheck: false,
     strict: true,

@@ -21,6 +21,8 @@ ipcMain.on('check-update', (evt: any, msg: string): void => {
     checkUpdate(msg).then((ret: any): void => {
       if (ret) {
         evt.sender.send('update-available', ret)
+      } else {
+        evt.sender.send('update-not-available', msg)
       }
     })
   }
