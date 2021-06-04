@@ -40,10 +40,10 @@ export default ({ active = false, opened, histories, children, toggleActive, del
                   }}>
                   <div className="history-head w-100 position-relative">
                     <span className={`flex-1 d-block text-base pr-20 line-height-25 text-truncate ${opened.path === history.path ? 'text-gray font-weight-bold' : 'text-muted'}`}>{history.name}</span>
-                    <button className="delete-history p-0 border-0 bg-transparent"
+                    <button className="delete-history p-0 border-0 outline-0 bg-transparent"
                       onClick={(e: any) => {
                         e.stopPropagation()
-                        deleteHistory(i)
+                        // deleteHistory(i)
                       }}>
                       <Icon type="trash" size={14}></Icon>
                     </button>

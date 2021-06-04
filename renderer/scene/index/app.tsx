@@ -23,10 +23,10 @@ export default class App extends React.Component<any, any> {
         shell.openExternal(info.url)
       }
     })
-    ipcRenderer.on('update-not-available', (version: any) => {
+    ipcRenderer.on('update-not-available', () => {
       // eslint-disable-next-line no-undef
       let notify = new Notification('暂无可用更新', {
-        body: `当前版本 v${version} 已是最新`
+        body: `当前版本 v${PKGJson.version} 已是最新`
       })
       notify.onclick = () => {}
     })

@@ -174,7 +174,7 @@ export default class ProjectForm extends React.Component<any, any> {
             )}
             <div className="text-center py-12">
               <button className="btn btn-success mr-12" type="button" disabled={this.downloading} onClick={this.submit}>
-                <span className="px-20">{this.downloading ? `${message.initProject}...` : message.submit}</span>
+                <span className="px-20">{this.downloading ? `${message.createProject}...` : message.submit}</span>
               </button>
               <button className="btn btn-secondary" type="button" onClick={onCancel}>
                 <span className="px-20">{message.cancel}</span>

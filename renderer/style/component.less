@@ -39,6 +39,13 @@
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
+.input:focus{
+  box-shadow: 0 0 0 1px #147bd1;
+  border-color: #147bd1;
+  color: rgba(0,0,0,.65);
+  background-color: #fff;
+  outline: none;
+}
 
 // button
 .btn{
@@ -260,7 +267,11 @@
 }
 
 .select--open .select__selection, .select--focus .select__selection{
-  border-color: #0b69ff;
+  box-shadow: 0 0 0 1px #147bd1;
+  border-color: #147bd1;
+  color: rgba(0,0,0,.65);
+  background-color: #fff;
+  outline: none;
   // box-shadow: inset 0 0 0 1px #0b69ff;
   .select__selection-icon >i {
     transition: all .2s;

@@ -22,7 +22,7 @@ ipcMain.on('check-update', (evt: any, msg: string): void => {
       if (ret) {
         evt.sender.send('update-available', ret)
       } else {
-        evt.sender.send('update-not-available', msg)
+        evt.sender.send('update-not-available')
       }
     })
   }
