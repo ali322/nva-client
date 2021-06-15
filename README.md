@@ -2,7 +2,7 @@ nva-client
 ===
 [![GitHub release](https://img.shields.io/github/release/ali322/nva-client.svg)](https://github.com/ali322/nva-client/releases)
 
-gui client for [nva](https://github.com/ali322/nva) cli, no environment pre-requirements
+Desktop Application of [nva](https://github.com/ali322/nva) cli, no environment pre-requirements
 
 English | [简体中文](./README_CN.md)
 
