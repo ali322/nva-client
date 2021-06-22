@@ -6559,10 +6559,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.npm.taobao.org/number-is-nan/download/number-is-nan-1.0.1.tgz?cache=0&sync_timestamp=1617776101309&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnumber-is-nan%2Fdownload%2Fnumber-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nva-core@^0.7.19:
-  version "0.7.19"
-  resolved "https://registry.nlark.com/nva-core/download/nva-core-0.7.19.tgz#9ee6f15d00b6a8a35c52b1f0e928e6c6bc616b85"
-  integrity sha1-nubxXQC2qKNcUrHw6Sjmxrxha4U=
+nva-core@^0.7.20:
+  version "0.7.20"
+  resolved "https://registry.nlark.com/nva-core/download/nva-core-0.7.20.tgz#bbb02778f221dcd43ae12044d29ff8f4c3bbd7ff"
+  integrity sha1-u7AnePIh3NQ64SBE0p/49MO71/8=
   dependencies:
     ajv "^5.4.0"
     chokidar "^2.0.3"
@@ -6593,10 +6593,10 @@ nva-server@^0.7.2:
     serve-favicon "^2.4.2"
     serve-static "^1.12.1"
 
-nva-task@1.0.57:
-  version "1.0.57"
-  resolved "https://registry.nlark.com/nva-task/download/nva-task-1.0.57.tgz#797721c67377ecedb6a17752ceb9a8eacfd21bb3"
-  integrity sha1-eXchxnN37O22oXdSzrmo6s/SG7M=
+nva-task@1.0.58:
+  version "1.0.58"
+  resolved "https://registry.nlark.com/nva-task/download/nva-task-1.0.58.tgz#7e2e8222543ab3176b0deec563046b1891efaad7"
+  integrity sha1-fi6CIlQ6sxdrDe7FYwRrGJHvqtc=
   dependencies:
     ajv "^6.4.0"
     browser-sync "^2.26.13"
@@ -6618,7 +6618,7 @@ nva-task@1.0.57:
     mini-css-extract-plugin "^1.1.1"
     node-emoji "^1.8.1"
     nodemon "^1.17.3"
-    nva-core "^0.7.19"
+    nva-core "^0.7.20"
     nva-server "^0.7.2"
     nva-util "^0.5.51"
     opn "^5.0.0"

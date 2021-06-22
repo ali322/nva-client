@@ -27,6 +27,7 @@ export default class WorkBench extends React.Component<any, any> {
   @observable drawerActived: boolean = false
   @observable modalActived: boolean = false
   toast!: any
+  project!: any
 
   componentDidMount() {
     const { histories, opened, saveOpened } = this.props
@@ -46,6 +47,7 @@ export default class WorkBench extends React.Component<any, any> {
     if (index < 0) {
       addHistory(project)
     }
+    this.project.wrappedInstance.stop()
     saveOpened(project)
     this.modalActived = false
     this.drawerActived = false
@@ -59,6 +61,7 @@ export default class WorkBench extends React.Component<any, any> {
       this.toast.error(message.unsupportedProject)
       return
     }
+    this.project.wrappedInstance.stop()
     let project: any = { path, name: isValid.name }
     saveOpened(project)
     const index = findIndex(histories, project)
@@ -68,6 +71,7 @@ export default class WorkBench extends React.Component<any, any> {
   }
   @autobind
   async openProject() {
+    this.project.wrappedInstance.stop()
     let ret = await remote.dialog.showOpenDialog(win, {
       title: '选择工程目录',
       properties: ['openDirectory']
@@ -94,7 +98,9 @@ export default class WorkBench extends React.Component<any, any> {
       <div className={`flex-0 py-12 d-flex align-items-center justify-content-center ${opened ? '' : 'h-100'}`}>
         <button type="button"
           className={`btn btn-success mr-8 btn-normal`}
-          onClick={() => this.modalActived = true}>
+          onClick={() => {
+            this.modalActived = true
+          }}>
           <Icon type="add" size={16}></Icon>
           <span className="pl-4">{message.createProject}</span>
         </button>
@@ -122,7 +128,7 @@ export default class WorkBench extends React.Component<any, any> {
     if (opened) {
       return (
         <Project path={opened.path} name={opened.name} history={history}
-          toggleDrawer={this.toggledDrawer}></Project>
+          toggleDrawer={this.toggledDrawer} ref={(ref: any) => this.project = ref}></Project>
       )
     }
     return null

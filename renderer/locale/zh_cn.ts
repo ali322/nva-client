@@ -26,6 +26,7 @@ export default {
   settings: '设置',
   // project
   createProject: '创建项目',
+  creating: '创建中',
   openProject: '打开项目',
   runDev: '运行开发',
   buildProject: '打包项目',

@@ -43,7 +43,7 @@ export default ({ active = false, opened, histories, children, toggleActive, del
                     <button className="delete-history p-0 border-0 outline-0 bg-transparent"
                       onClick={(e: any) => {
                         e.stopPropagation()
-                        // deleteHistory(i)
+                        deleteHistory(i)
                       }}>
                       <Icon type="trash" size={14}></Icon>
                     </button>

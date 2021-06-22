@@ -26,6 +26,7 @@ export default {
   settings: 'Settings',
   // project
   createProject: 'Create Project',
+  creating: 'Creating',
   openProject: 'Open Project',
   runDev: 'Run',
   buildProject: 'Build',
