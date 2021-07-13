@@ -66,23 +66,27 @@ export default class ProjectExtra extends React.Component<any, any> {
   renderModal() {
     const { installPKG, locale, path, runCMD } = this.props
     const message = t(locale)
+    let nextPkgTypes: Record<string, string>[] = []
+    pkgTypes.forEach(v => {
+      nextPkgTypes.push(Object.assign({}, v, { label: message[v.label] }))
+    })
     if (this.modalType === ModalType.addDep) {
       return (
-        <div className="py-24 w-100">
-          <div className="input-wrapper mb-12 px-20" style={{ width: '280px' }}>
+        <div className="py-24">
+          <div className="input-wrapper mb-12 px-20">
             <input type="text" placeholder={message.typePackage} className="input input--sm" onChange={(e: any) => {
               this.name = e.target.value
             }}/>
           </div>
-          <div className="input-wrapper px-20 mb-20" style={{ width: '280px' }}>
+          <div className="input-wrapper px-20 mb-20">
             <input type="text" placeholder={message.typeVersion} className="input input--sm" onChange={(e: any) => {
               this.version = e.target.value
             }}/>
           </div>
           <div className="input-wrapper px-20 mb-20">
-            <Select data={pkgTypes} placeholder={message.selectType} width={100}
+            <Select data={nextPkgTypes} placeholder={message.selectType} width={100}
               onChange={(val: any) => {
-                console.log('val', val)
+                // console.log('val', val)
                 this.pkgType = val
               }} value={this.pkgType}></Select>
           </div>
@@ -170,12 +174,12 @@ export default class ProjectExtra extends React.Component<any, any> {
   }
   render() {
     const message = t(this.props.locale)
-    const { running } = this.props
+    const { running, working } = this.props
     return (
       <div className="project-extra-container">
         <div className="project-extra h-100 d-flex align-items-center pr-12">
           {this.upgradePKG.length > 0 && !running ? (
-            <button className="text-muted d-flex align-items-center outline-0 border-0 bg-transparent line-height-25 cursor-pointer" onClick={() => {
+            <button disabled={running || working} className="text-muted d-flex align-items-center outline-0 border-0 bg-transparent line-height-25 cursor-pointer" onClick={() => {
               this.modalVisible = true
               this.modalType = ModalType.upgradeDep
             }}>
@@ -183,14 +187,14 @@ export default class ProjectExtra extends React.Component<any, any> {
               <span className="pl-4 text-sm">{message.updateDep}</span>
             </button>
           ) : null}
-          {!running && <button className="text-muted d-flex align-items-center outline-0 border-0 bg-transparent line-height-25 cursor-pointer" onClick={() => {
+          {!running && <button disabled={running || working} className="text-muted d-flex align-items-center outline-0 border-0 bg-transparent line-height-25 cursor-pointer" onClick={() => {
             this.modalVisible = true
             this.modalType = ModalType.installDep
           }}>
             <Icon type="sync"></Icon>
             <span className="pl-4 text-sm">{message.installDep}</span>
           </button>}
-          {!running && <button className="text-muted d-flex align-items-center outline-0 border-0 bg-transparent line-height-25 cursor-pointer" onClick={() => {
+          {!running && <button disabled={running || working} className="text-muted d-flex align-items-center outline-0 border-0 bg-transparent line-height-25 cursor-pointer" onClick={() => {
             this.modalVisible = true
             this.modalType = ModalType.addDep
           }}>
@@ -198,7 +202,7 @@ export default class ProjectExtra extends React.Component<any, any> {
             <span className="pl-4 text-sm">{message.addDep}</span>
           </button>}
           {!running && (
-            <button disabled={running} className="text-muted d-flex align-items-center border-0 bg-transparent line-height-25 cursor-pointer" onClick={() => {
+            <button disabled={running || working} className="text-muted d-flex align-items-center border-0 bg-transparent line-height-25 cursor-pointer" onClick={() => {
               this.modalVisible = true
               this.modalType = ModalType.runCMD
             }}>

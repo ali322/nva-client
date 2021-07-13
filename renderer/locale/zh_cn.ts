@@ -65,6 +65,8 @@ export default {
   latestVersion: '最新版本',
   spa: '单页应用',
   mpa: '多页应用',
+  production: '生产',
+  development: '开发',
   // updater
   newVersionFound: '发现新版本',
   updateAvailable: '发现可用更新',

@@ -65,6 +65,8 @@ export default {
   latestVersion: 'Latest Version',
   spa: 'single page application',
   mpa: 'multi page application',
+  production: 'production',
+  development: 'development',
   // updater
   newVersionFound: 'New version found',
   updateAvailable: 'Updates available',
