@@ -47,7 +47,6 @@ export default class WorkBench extends React.Component<any, any> {
     if (index < 0) {
       addHistory(project)
     }
-    this.project.wrappedInstance.stop()
     saveOpened(project)
     this.modalActived = false
     this.drawerActived = false
@@ -140,7 +139,7 @@ export default class WorkBench extends React.Component<any, any> {
         {this.renderOperations()}
         {this.renderProject()}
         <Modal width={600} active={this.modalActived} onClose={() => this.modalActived = false}>
-          <ProjectForm onCreate={this.createProject} onFail={() => this.toast.error(message.initProjectFailed)} onCancel={() => this.modalActived = false}></ProjectForm>
+          <ProjectForm onCreate={this.createProject} onFail={() => this.toast.error(message.createProjectFailed)} onCancel={() => this.modalActived = false}></ProjectForm>
         </Modal>
         <Toast ref={(ref: any) => this.toast = ref}></Toast>
       </div>

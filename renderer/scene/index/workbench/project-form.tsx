@@ -86,7 +86,8 @@ export default class ProjectForm extends React.Component<any, any> {
           path: this.saved
         }
         onCreate(project)
-      } catch (_) {
+      } catch (e) {
+        console.log(e)
         onFail()
       } finally {
         this.downloading = false
@@ -108,7 +109,7 @@ export default class ProjectForm extends React.Component<any, any> {
       <div className="h-100 d-flex flex-column pt-28 pb-12">
         <div className="header-border bg-white pb-12 d-flex">
           <div className="flex-1 text-center">
-            <h1 className="text-xl">{message.initProject}</h1>
+            <h1 className="text-xl">{message.createProject}</h1>
           </div>
         </div>
         <div className="flex-1 d-flex justify-content-start align-items-start p-20 pb-0">

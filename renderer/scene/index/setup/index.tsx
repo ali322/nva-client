@@ -53,7 +53,7 @@ export default class Setup extends React.Component<any, any> {
         </div>
         <Modal active={this.modalVisible} width={300} onClose={() => this.modalVisible = false}>
           <div className="py-24">
-            <p className="text-center">{message.resetAppNow}</p>
+            <p className="text-center text-md">{message.resetAppNow}</p>
             <div className="d-flex flex-row justify-content-center">
               <button className="btn btn-success px-12 mr-12"
                 onClick={() => {

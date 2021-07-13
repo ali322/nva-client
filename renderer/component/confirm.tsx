@@ -28,9 +28,9 @@ export default class Confirm extends React.Component<any, any> {
       }}>
         <div className="modal-mask"></div>
         <div className="modal-inner px-20 py-12">
-          <p className="m-0 text-center py-8">{this.content}</p>
+          <p className="m-0 text-center py-8 text-gray text-md">{this.content}</p>
           <div className="text-right mt-12">
-            <button className="btn btn-primary px-16 mr-12" onClick={() => {
+            <button className="btn btn-success px-16 mr-12" onClick={() => {
               this.ok()
               this.handleClose()
             }}>

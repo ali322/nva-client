@@ -69,12 +69,12 @@ export default class ProjectExtra extends React.Component<any, any> {
     if (this.modalType === ModalType.addDep) {
       return (
         <div className="py-24 w-100">
-          <div className="input-wrapper mb-12 px-20" style={{ width: '220px' }}>
+          <div className="input-wrapper mb-12 px-20" style={{ width: '280px' }}>
             <input type="text" placeholder={message.typePackage} className="input input--sm" onChange={(e: any) => {
               this.name = e.target.value
             }}/>
           </div>
-          <div className="input-wrapper px-20 mb-20" style={{ width: '220px' }}>
+          <div className="input-wrapper px-20 mb-20" style={{ width: '280px' }}>
             <input type="text" placeholder={message.typeVersion} className="input input--sm" onChange={(e: any) => {
               this.version = e.target.value
             }}/>
@@ -136,11 +136,11 @@ export default class ProjectExtra extends React.Component<any, any> {
                 installPKG()
                 this.modalVisible = false
               }}>
-              <span>{message.submit}</span>
+              <span>{message.yes}</span>
             </button>
             <button className="btn btn-secondary px-12"
               onClick={() => this.modalVisible = false}>
-              <span>{message.cancel}</span>
+              <span>{message.nope}</span>
             </button>
           </div>
         </div>

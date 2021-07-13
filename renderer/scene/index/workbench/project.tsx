@@ -157,8 +157,8 @@ export default class Project extends React.Component<any, any> {
         <div className="d-flex justify-content-center align-items-center pl-32">
           <div className="text-xl pr-2">{name}</div>
         </div>
-        <button disabled={running} onClick={toggleDrawer} className="outline-0 pl-8 pt-4 border-0 bg-transparent line-height-25 cursor-pointer">
-          <Icon type="arrow-dropdown"></Icon>
+        <button disabled={running || working} onClick={toggleDrawer} className="outline-0 pl-8 pt-4 border-0 bg-transparent line-height-25 cursor-pointer">
+          <Icon type="arrow-dropdown" hide={running || working}></Icon>
         </button>
         <div className="flex-1 text-left pl-12">
           <button
