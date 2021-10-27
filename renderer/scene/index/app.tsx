@@ -10,9 +10,15 @@ import WorkBench from './workbench'
 import Setup from './setup'
 import PKGJson from '../../../package.json'
 
+@inject((stores: any) => ({
+  settings: stores.root.settings
+}))
 export default class App extends React.Component<any, any> {
   componentDidMount() {
-    ipcRenderer.send('check-update', PKGJson.version)
+    const { settings } = this.props
+    if (settings.selfUpdateCheck) {
+      ipcRenderer.send('check-update', PKGJson.version)
+    }
     ipcRenderer.on('update-available', (_: any, info: any) => {
       // eslint-disable-next-line no-undef
       let notify = new Notification('发现新版本', {

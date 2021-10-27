@@ -17,6 +17,7 @@ export default {
   previewPort: '预览端口',
   analyzeCompile: '分析编译',
   checkUpdate: '检测更新',
+  autoUpdate: '自动更新',
   memLimit: '内存限制',
   // advance settings
   npmCache: 'NPM缓存',

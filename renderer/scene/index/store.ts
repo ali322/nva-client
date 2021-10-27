@@ -47,6 +47,7 @@ class RootStore {
     ssrPort: 7000,
     previewPort: 3000,
     upgradeCheck: false,
+    selfUpdateCheck: true,
     strict: true,
     profile: false,
     memoryLimit: -1,

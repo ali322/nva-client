@@ -17,6 +17,7 @@ export default {
   previewPort: 'Preview Port',
   analyzeCompile: 'Analyze Compilation',
   checkUpdate: 'Check Update',
+  autoUpdate: 'Auto Update',
   memLimit: 'Memory Limit',
   // advance settings
   npmCache: 'NPM Cache',

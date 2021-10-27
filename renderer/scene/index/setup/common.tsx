@@ -33,6 +33,14 @@ export default class Common extends React.Component<any, any> {
           </div>
         </div>
         <div className="d-flex align-items-center py-16">
+          <div className="text-right text-md align-middle flex-1 pr-20">{message.checkUpdate}</div>
+          <div className="flex-3">
+            <Switch size="sm" active={settings.selfUpdateCheck} onChange={(actived: boolean) => {
+              saveSettings('selfUpdateCheck', actived)
+            }}></Switch>
+          </div>
+        </div>
+        <div className="d-flex align-items-center py-16">
           <div className="text-right text-md align-middle flex-1 pr-20">{message.language}</div>
           <div className="flex-3">
             <Select data={locales}
