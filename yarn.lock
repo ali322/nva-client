@@ -6180,9 +6180,9 @@ mobx@^5.10.0:
   integrity sha1-uaXytiUfXZaYDRPHjptdjUziJmU=
 
 moment@^2.18.1:
-  version "2.29.1"
-  resolved "https://registry.npm.taobao.org/moment/download/moment-2.29.1.tgz?cache=0&sync_timestamp=1601983320283&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmoment%2Fdownload%2Fmoment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
-  integrity sha1-sr52n6MZQL6e7qZGnAdeNQBvo9M=
+  version "2.29.2"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.2.tgz#00910c60b20843bcba52d37d58c628b47b1f20e4"
+  integrity sha512-UgzG4rvxYpN15jgCmVJwac49h9ly9NurikMWGPdVxm8GZD6XjkKPxDTjQQ43gtGgnV3X0cAyWDdP2Wexoquifg==
 
 monofile-utilities@^4.11.1:
   version "4.11.1"
@@ -6559,10 +6559,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.npm.taobao.org/number-is-nan/download/number-is-nan-1.0.1.tgz?cache=0&sync_timestamp=1617776101309&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnumber-is-nan%2Fdownload%2Fnumber-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nva-core@^0.7.19:
-  version "0.7.19"
-  resolved "https://registry.nlark.com/nva-core/download/nva-core-0.7.19.tgz#9ee6f15d00b6a8a35c52b1f0e928e6c6bc616b85"
-  integrity sha1-nubxXQC2qKNcUrHw6Sjmxrxha4U=
+nva-core@^0.7.20:
+  version "0.7.20"
+  resolved "https://registry.yarnpkg.com/nva-core/-/nva-core-0.7.20.tgz#bbb02778f221dcd43ae12044d29ff8f4c3bbd7ff"
+  integrity sha512-BdV8A4FBnSaeO9kJuTvsTLHxSr4bechIyeM3kTxuysBeZi0QNYCwwzTSM1FvAmsPhM+cCAroNguFIwsy7ANLbQ==
   dependencies:
     ajv "^5.4.0"
     chokidar "^2.0.3"
@@ -6593,10 +6593,10 @@ nva-server@^0.7.2:
     serve-favicon "^2.4.2"
     serve-static "^1.12.1"
 
-nva-task@1.0.57:
-  version "1.0.57"
-  resolved "https://registry.nlark.com/nva-task/download/nva-task-1.0.57.tgz#797721c67377ecedb6a17752ceb9a8eacfd21bb3"
-  integrity sha1-eXchxnN37O22oXdSzrmo6s/SG7M=
+nva-task@1.0.63:
+  version "1.0.63"
+  resolved "https://registry.yarnpkg.com/nva-task/-/nva-task-1.0.63.tgz#645e6ae10c0da2d511f422cdfa3aa5d111f774df"
+  integrity sha512-4g51Eon6C9anPUc9kL5kO+fGcCMK3LOaeEjutAWMqTlaaM/vY8R1zW4YFzh8w4ezPhFaB3QXjsaMmn6avX3uIw==
   dependencies:
     ajv "^6.4.0"
     browser-sync "^2.26.13"
@@ -6618,7 +6618,7 @@ nva-task@1.0.57:
     mini-css-extract-plugin "^1.1.1"
     node-emoji "^1.8.1"
     nodemon "^1.17.3"
-    nva-core "^0.7.19"
+    nva-core "^0.7.20"
     nva-server "^0.7.2"
     nva-util "^0.5.51"
     opn "^5.0.0"
