@@ -1552,17 +1552,17 @@ cacheable-request@^6.0.0:
     normalize-url "^4.1.0"
     responselike "^1.0.2"
 
-cacheable-request@^7.0.1:
-  version "7.0.1"
-  resolved "https://registry.npm.taobao.org/cacheable-request/download/cacheable-request-7.0.1.tgz?cache=0&sync_timestamp=1579606262568&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcacheable-request%2Fdownload%2Fcacheable-request-7.0.1.tgz#062031c2856232782ed694a257fa35da93942a58"
-  integrity sha1-BiAxwoViMngu1pSiV/o12pOUKlg=
+cacheable-request@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/cacheable-request/-/cacheable-request-7.0.2.tgz#ea0d0b889364a25854757301ca12b2da77f91d27"
+  integrity sha512-pouW8/FmiPQbuGpkXQ9BAPv/Mo5xDGANgSNXzTzJ8DrKGuXOssM4wIQRjfanNRh3Yu5cfYPvcorqbhg2KIJtew==
   dependencies:
     clone-response "^1.0.2"
     get-stream "^5.1.0"
     http-cache-semantics "^4.0.0"
     keyv "^4.0.0"
     lowercase-keys "^2.0.0"
-    normalize-url "^4.1.0"
+    normalize-url "^6.0.1"
     responselike "^2.0.0"
 
 call-bind@^1.0.0, call-bind@^1.0.2:
@@ -4384,17 +4384,17 @@ globby@^9.1.0:
     pify "^4.0.1"
     slash "^2.0.0"
 
-got@11.8.2:
-  version "11.8.2"
-  resolved "https://registry.npm.taobao.org/got/download/got-11.8.2.tgz#7abb3959ea28c31f3576f1576c1effce23f33599"
-  integrity sha1-ers5Weoowx81dvFXbB7/ziPzNZk=
+got@11.8.5:
+  version "11.8.5"
+  resolved "https://registry.yarnpkg.com/got/-/got-11.8.5.tgz#ce77d045136de56e8f024bebb82ea349bc730046"
+  integrity sha512-o0Je4NvQObAuZPHLFoRSkdG2lTgtcynqymzg2Vupdx6PorhaT5MCbIyXG6d4D94kk8ZG57QeosgdiqfJWhEhlQ==
   dependencies:
     "@sindresorhus/is" "^4.0.0"
     "@szmarczak/http-timer" "^4.0.5"
     "@types/cacheable-request" "^6.0.1"
     "@types/responselike" "^1.0.0"
     cacheable-lookup "^5.0.3"
-    cacheable-request "^7.0.1"
+    cacheable-request "^7.0.2"
     decompress-response "^6.0.0"
     http2-wrapper "^1.0.0-beta.5.2"
     lowercase-keys "^2.0.0"
@@ -6456,6 +6456,11 @@ normalize-url@^4.1.0:
   resolved "https://registry.nlark.com/normalize-url/download/normalize-url-4.5.1.tgz#0dd90cf1288ee1d1313b87081c9a5932ee48518a"
   integrity sha1-DdkM8SiO4dExO4cIHJpZMu5IUYo=
 
+normalize-url@^6.0.1:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-6.1.0.tgz#40d0885b535deffe3f3147bec877d05fe4c5668a"
+  integrity sha512-DlL+XwOy3NxAQ8xuC0okPgK46iuVNAK01YN7RueYBqqFeGsBjV9XmCAzAdgt+667bCl5kPh9EqKKDwnaPG1I7A==
+
 normalize.css@^8.0.1:
   version "8.0.1"
   resolved "https://registry.npm.taobao.org/normalize.css/download/normalize.css-8.0.1.tgz#9b98a208738b9cc2634caacbc42d131c97487bf3"
@@ -6559,10 +6564,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.npm.taobao.org/number-is-nan/download/number-is-nan-1.0.1.tgz?cache=0&sync_timestamp=1617776101309&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnumber-is-nan%2Fdownload%2Fnumber-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nva-core@^0.7.19:
-  version "0.7.19"
-  resolved "https://registry.nlark.com/nva-core/download/nva-core-0.7.19.tgz#9ee6f15d00b6a8a35c52b1f0e928e6c6bc616b85"
-  integrity sha1-nubxXQC2qKNcUrHw6Sjmxrxha4U=
+nva-core@^0.7.20:
+  version "0.7.20"
+  resolved "https://registry.yarnpkg.com/nva-core/-/nva-core-0.7.20.tgz#bbb02778f221dcd43ae12044d29ff8f4c3bbd7ff"
+  integrity sha512-BdV8A4FBnSaeO9kJuTvsTLHxSr4bechIyeM3kTxuysBeZi0QNYCwwzTSM1FvAmsPhM+cCAroNguFIwsy7ANLbQ==
   dependencies:
     ajv "^5.4.0"
     chokidar "^2.0.3"
@@ -6593,10 +6598,10 @@ nva-server@^0.7.2:
     serve-favicon "^2.4.2"
     serve-static "^1.12.1"
 
-nva-task@1.0.57:
-  version "1.0.57"
-  resolved "https://registry.nlark.com/nva-task/download/nva-task-1.0.57.tgz#797721c67377ecedb6a17752ceb9a8eacfd21bb3"
-  integrity sha1-eXchxnN37O22oXdSzrmo6s/SG7M=
+nva-task@1.0.63:
+  version "1.0.63"
+  resolved "https://registry.yarnpkg.com/nva-task/-/nva-task-1.0.63.tgz#645e6ae10c0da2d511f422cdfa3aa5d111f774df"
+  integrity sha512-4g51Eon6C9anPUc9kL5kO+fGcCMK3LOaeEjutAWMqTlaaM/vY8R1zW4YFzh8w4ezPhFaB3QXjsaMmn6avX3uIw==
   dependencies:
     ajv "^6.4.0"
     browser-sync "^2.26.13"
@@ -6618,7 +6623,7 @@ nva-task@1.0.57:
     mini-css-extract-plugin "^1.1.1"
     node-emoji "^1.8.1"
     nodemon "^1.17.3"
-    nva-core "^0.7.19"
+    nva-core "^0.7.20"
     nva-server "^0.7.2"
     nva-util "^0.5.51"
     opn "^5.0.0"
